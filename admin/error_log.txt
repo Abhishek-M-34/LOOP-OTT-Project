@@ -1,0 +1,1 @@
+Error deleting video: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`ott`.`slideshow_images`, CONSTRAINT `slideshow_images_ibfk_1` FOREIGN KEY (`link_id`) REFERENCES `links` (`id`))

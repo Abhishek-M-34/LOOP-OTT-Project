@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Video and Image Upload Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to left, #ffffff, #e50914);
+            color: #fff;
+            padding: 20px;
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Apply a global box-sizing border-box for easier layout calculations */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Set a background color and font for the entire page */
+
+        /* Style the header section */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            max-width: 50px;
+            /* Adjust the max-width as needed */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+            /* Adjust the font size */
+        }
+
+        nav ul li a i {
+            font-size: 24px;
+            /* Adjust the font size as needed */
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+
+        input[type="file"] {
+            width: calc(50% - 5px);
+            margin-right: 10px;
+        }
+
+        .upload-row {
+            margin-bottom: 20px;
+        }
+
+        .upload-row label {
+            width: 30%;
+            margin-right: 10px;
+        }
+
+        .upload-row input[type="file"] {
+            width: calc(70% - 10px);
+        }
+
+        button {
+            background-color: #e50914;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff0000;
+        }
+
+        #movieInfo {
+            margin-top: 20px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #movieInfo h3 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #movieInfo p {
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        #movieInfo img {
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* CSS for the toggle button */
+        .toggle-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            margin-left: 63.2%;
+        }
+
+        .toggle-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <!-- Add your logo and navigation here -->
+        <img src="../your-logo.png" alt="Your Logo">
+        <nav>
+            <ul>
+                <!-- Add navigation links -->
+                <li><a href="admin_home.php"><i class='bx bxs-home-alt-2'></i></a></li>
+                <li><a href="upload.html"><i class='bx bx-upload'></i></a></li>
+                <li><a href="user.php"><i class='bx bxs-user'></i></i></a></li>
+                <li><a href="video_management.php"><i class='bx bxs-videos'></i></i></a></li>
+                <li><a href="payment_managemant.php"><i class='bx bxs-purchase-tag'></i></i></i></a></li>
+                <li><a href="ad_upload.php"><i class='bx bx-cloud-upload'></i></a></li>
+                <li><a href="../signout.php"><i class='bx bx-log-out-circle'></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br>
+    <button class="toggle-button" onclick="switchToSeriesUpload()">Go To Upload Series</button>
+    <center>
+        <h2>Upload Movies</h2>
+    </center>
+
+
+    <form action="upload.php" method="post" enctype="multipart/form-data" id="uploadForm">
+        <label for="contentTitle">Title:</label>
+        <input type="text" name="contentTitle" id="contentTitle" required>
+        <br>
+        <label for="uploadingDate">Upload Date:</label>
+        <input type="date" name="uploadingDate" id="uploadingDate" value="<?php echo date('Y-m-d'); ?>" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" rows="5" required></textarea>
+        <br>
+        <div class="upload-row" id="currentStatusSection">
+            <label for="currentStatus">Current Status:</label>
+            <select name="currentStatus" id="currentStatus" required>
+                <option value="upcoming" selected>Upcoming</option>
+                <option value="uploaded">Uploaded</option>
+                <option value="p_uploaded">Premium Uploaded</option>
+            </select>
+        </div>
+        <div class="upload-row" id="videoFileSection" style="display:none;">
+            <label for="videoFile">Upload Video:</label>
+            <input type="file" name="videoFile" id="videoFile" accept="video/*">
+        </div>
+
+
+        <div class="upload-row">
+            <label for="imageFile">Upload Cover Image:</label>
+            <input type="file" name="imageFile" id="imageFile" accept="image/*">
+        </div>
+        <div class="upload-row" id="slideshowImagesSection" style="display:none;">
+            <label for="slideshowImages">Upload Slideshow Images:</label>
+            <input type="file" name="slideshowImages[]" id="slideshowImages" accept="image/*" multiple>
+        </div>
+        <br>
+
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+
+    <script>
+        function switchToSeriesUpload() {
+            window.location.href = 'upload_series.html';
+        }
+
+        window.onload = function () {
+            var currentStatus = document.getElementById('currentStatus');
+            var videoFileSection = document.getElementById('videoFileSection');
+            var slideshowImagesSection = document.getElementById('slideshowImagesSection');
+
+            // Initially hide the video file section if current status is 'upcoming'
+            if (currentStatus.value === 'upcoming') {
+                videoFileSection.style.display = 'none';
+                slideshowImagesSection.style.display = 'none';
+            }
+
+            // Add change event listener to the currentStatus dropdown
+            currentStatus.addEventListener('change', function () {
+                var selectedValue = this.value;
+                // Hide/show video file section based on current status
+                // Initially hide the video file section if current status is 'upcoming'
+                if (currentStatus.value === 'upcoming') {
+                    videoFileSection.style.display = 'none';
+                    slideshowImagesSection.style.display = 'none';
+                }
+                else if (selectedValue === 'uploaded') {
+                    videoFileSection.style.display = 'block';
+                    slideshowImagesSection.style.display = 'block';
+                } else {
+                    videoFileSection.style.display = 'block';
+                    slideshowImagesSection.style.display = 'block';
+                }
+            });
+        };
+    </script>
+
+
+    <div id="movieInfo"></div>
+    <script>
+
+        // Function to resize and display the image
+        function resizeAndDisplayImage(file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const img = new Image();
+                img.src = event.target.result;
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    // Set fixed width and height
+                    const width = 262;
+                    const height = 410;
+
+                    // Resize image
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    // Display resized image
+                    const resizedImg = new Image();
+                    resizedImg.src = canvas.toDataURL('image/jpeg');
+                    resizedImg.alt = 'Resized Image';
+                    resizedImg.width = width;
+                    resizedImg.height = height;
+                    document.getElementById('movieInfo').appendChild(resizedImg);
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Function to handle file input change
+        function handleFileInputChange(event) {
+            const file = event.target.files[0];
+            if (file) {
+                resizeAndDisplayImage(file);
+            }
+        }
+
+        // Add event listener to file input
+        document.getElementById('imageFile').addEventListener('change', handleFileInputChange);
+
+        // Function to get movie information
+        function getMovieInfo() {
+            var title = document.getElementById("contentTitle").value;
+            var apiKey = "31be0592"; // Your OMDB API key
+            var url = `http://www.omdbapi.com/?t=${title}&apikey=${apiKey}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    var info = document.getElementById("movieInfo");
+                    info.innerHTML = `
+                <h3>${data.Title}</h3>
+                <p>Released: ${data.Released}</p>
+                <p>Language:  ${data.Language}</p>
+                <p>Rating:  ${"IMDB:" + data.imdbVotes + "/10"}</p>
+                <p>Genre: ${data.Genre}</p>
+                <p>Director: ${data.Director}</p>
+                <p>Plot: ${data.Plot}</p>
+            `;
+
+                    // Create and display poster image
+                    if (data.Poster && data.Poster !== "N/A") {
+                        var posterImg = document.createElement('img');
+                        posterImg.src = data.Poster;
+                        posterImg.alt = 'Movie Poster';
+                        info.appendChild(posterImg);
+                    } else {
+                        info.innerHTML += "<p>No poster available</p>";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+
+        // Trigger getMovieInfo function when user finishes typing movie title
+        document.getElementById("contentTitle").addEventListener("input", getMovieInfo);
+    </script>
+</body>
+
+</html>

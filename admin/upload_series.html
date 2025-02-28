@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Series Upload Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to left, #ffffff, #e50914);
+            color: #fff;
+            padding: 20px;
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Apply a global box-sizing border-box for easier layout calculations */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Set a background color and font for the entire page */
+
+        /* Style the header section */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            max-width: 50px;
+            /* Adjust the max-width as needed */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+            /* Adjust the font size */
+        }
+
+        nav ul li a i {
+            font-size: 24px;
+            /* Adjust the font size as needed */
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+
+        input[type="file"] {
+            width: calc(50% - 5px);
+            margin-right: 10px;
+        }
+
+        .upload-row {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .upload-row label {
+            width: 30%;
+            margin-right: 10px;
+        }
+
+        .upload-row input[type="file"] {
+            width: calc(70% - 10px);
+        }
+
+        button {
+            background-color: #e50914;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff0000;
+        }
+
+        /* CSS for the toggle button */
+        .toggle-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            margin-left: 63.2%;
+        }
+
+        .toggle-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Add your logo and navigation here -->
+        <img src="../your-logo.png" alt="Your Logo">
+        <nav>
+            <ul>
+                <!-- Add navigation links -->
+                <li><a href="admin_home.php"><i class='bx bxs-home-alt-2'></i></a></li>
+                <li><a href="upload.html"><i class='bx bx-upload'></i></a></li>
+                <li><a href="user.php"><i class='bx bxs-user'></i></i></a></li>
+                <li><a href="video_management.php"><i class='bx bxs-videos'></i></i></a></li>
+                <li><a href="payment_managemant.php"><i class='bx bxs-purchase-tag'></i></i></i></a></li>
+                <li><a href="ad_upload.php"><i class='bx bx-cloud-upload'></i></a></li>
+                <li><a href="../signout.php"><i class='bx bx-log-out-circle'></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br>
+    <button class="toggle-button" onclick="switchToMovieUpload()">Go To Upload Movie</button>
+
+    <center>
+        <h2>Series Upload</h2>
+    </center>
+    <form action="upload_series.php" method="post" enctype="multipart/form-data">
+        <label for="seriesTitle">Title:</label>
+        <input type="text" name="seriesTitle" id="seriesTitle" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" rows="5" required></textarea>
+        <br>
+        <label for="imageFile">Upload Poster Image:</label>
+        <input type="file" name="imageFile" id="imageFile" accept="image/*" required>
+        <br>
+        <label for="seasons">Number of Seasons:</label>
+        <input type="number" name="seasons" id="seasons" min="1" required onchange="addSeasonFields()">
+        <br>
+        <!-- Add fields for each season -->
+        <div id="seasonFields">
+            <!-- JavaScript will dynamically add fields for each season -->
+        </div>
+        <br>
+        <!-- Add upload row for current status -->
+        <div class="upload-row">
+            <label for="currentStatus">Current Status:</label>
+            <select name="currentStatus" id="currentStatus" required>
+                <option value="uploaded">Uploaded</option>
+            </select>
+        </div>
+        <br>
+        <input type="submit" value="Upload Series">
+    </form>
+
+    <script>
+        function switchToMovieUpload() {
+            window.location.href = 'upload.html';
+        }
+        const data = null;
+
+        const xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener('readystatechange', function () {
+            if (this.readyState === this.DONE) {
+                console.log(this.responseText);
+            }
+        });
+
+        xhr.open('GET', 'https://moviesminidatabase.p.rapidapi.com/movie/id/%7Bmovie_id%7D/cast/');
+        xhr.setRequestHeader('X-RapidAPI-Key', '9aaf7b34bbmsh40a45ffb49e9b85p1a3fe3jsn0a8ba16e0826');
+        xhr.setRequestHeader('X-RapidAPI-Host', 'moviesminidatabase.p.rapidapi.com');
+
+        xhr.send(data);
+        function addSeasonFields() {
+            var seasonsContainer = document.getElementById("seasonFields");
+            var numSeasons = parseInt(document.getElementById("seasons").value);
+
+            seasonsContainer.innerHTML = ''; // Clear previous fields
+
+            // Always generate at least one season field
+            var seasonDiv = document.createElement("div");
+            seasonDiv.innerHTML = "<h3>Season 1</h3>";
+            seasonDiv.innerHTML += "<label for='season1Episodes'>Number of Episodes:</label>";
+            seasonDiv.innerHTML += "<input type='number' name='season1Episodes' id='season1Episodes' min='1' required onchange='addEpisodeFields(1)'>";
+            seasonDiv.innerHTML += "<div id='season1EpisodesFields'></div>";
+            seasonsContainer.appendChild(seasonDiv);
+
+            // Generate additional fields for each additional season
+            for (var i = 2; i <= numSeasons; i++) {
+                var seasonDiv = document.createElement("div");
+                seasonDiv.innerHTML = "<h3>Season " + i + "</h3>";
+                seasonDiv.innerHTML += "<label for='season" + i + "Episodes'>Number of Episodes:</label>";
+                seasonDiv.innerHTML += "<input type='number' name='season" + i + "Episodes' id='season" + i + "Episodes' min='1' required onchange='addEpisodeFields(" + i + ")'>";
+                seasonDiv.innerHTML += "<div id='season" + i + "EpisodesFields'></div>";
+                seasonsContainer.appendChild(seasonDiv);
+            }
+        }
+
+        function addEpisodeFields(seasonNumber) {
+            var episodesContainer = document.getElementById("season" + seasonNumber + "EpisodesFields");
+            var numEpisodes = parseInt(document.getElementById("season" + seasonNumber + "Episodes").value);
+
+            episodesContainer.innerHTML = ''; // Clear previous fields
+
+            for (var i = 1; i <= numEpisodes; i++) {
+                var episodeInput = document.createElement("input");
+                episodeInput.type = "file";
+                episodeInput.name = "season" + seasonNumber + "Episode" + i;
+                episodeInput.id = "season" + seasonNumber + "Episode" + i;
+                episodeInput.accept = "video/*";
+                episodeInput.required = true;
+
+                var label = document.createElement("label");
+                label.htmlFor = "season" + seasonNumber + "Episode" + i;
+                label.textContent = "Episode " + i + " File:";
+
+                episodesContainer.appendChild(label);
+                episodesContainer.appendChild(document.createElement("br"));
+                episodesContainer.appendChild(episodeInput);
+                episodesContainer.appendChild(document.createElement("br"));
+            }
+        }
+
+        // Initialize with the default number of seasons
+        addSeasonFields();
+    </script>
+
+</body>
+
+</html>
