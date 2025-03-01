@@ -1,4 +1,5 @@
 <?php
+# Editied by Amish
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -23,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Verify the provided password against the hashed password in the database
             if (password_verify($_POST['password'], $user['password'])) {
                 // Check if the email belongs to the admin
-                if ($user['email'] === 'pyash4329@gmail.com') {
+                if ($user['email'] === 'amish@gmail.com') {
                     $_SESSION['user_email'] = $user['email'];
                     header("Location: ../admin/admin_home.php");
                     exit();
