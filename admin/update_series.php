@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 session_start();
 
 // Check if the user is logged in, redirect to login if not
@@ -30,6 +31,7 @@ if (isset($_POST['serieId'], $_POST['title'], $_POST['description'])) {
     // Prepare and execute the query to update series details
     $stmt = $conn->prepare("UPDATE series SET title = ?, description = ? WHERE series_id = ?");
     $stmt->bind_param("ssi", $title, $description, $serieId); // "ssi" means string, string, integer
+
 
     try {
         if ($stmt->execute()) {
