@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 session_start(); // Start the session
 
 // Check if the user is logged in
