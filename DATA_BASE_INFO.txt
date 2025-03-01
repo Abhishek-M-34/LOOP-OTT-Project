@@ -85,5 +85,5 @@ Data base Name : ott
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci
 
 
-NOTE: There are 7 Tables, some Tables may contain unwated columns. please be ind to remove it by ypour self.
+NOTE: There are 7 Tables, some Tables may contain unwated columns. please be kind to remove it by your self.
   
