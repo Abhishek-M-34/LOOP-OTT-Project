@@ -63,7 +63,7 @@
             padding: 10px;
             box-sizing: border-box;
             border: none;
-            border-bottom: 2px solid #3d2fea;
+            border-bottom: 2px solid #e50914;
             background-color: #333;
             color: #fff;
             margin-top: 8px;
@@ -88,34 +88,19 @@
         .login-link {
             margin-top: 15px;
             font-size: 0.8rem;
-            color:white;
+            color: #ccc;
         }
-        .link-login{
-            color: #3d2fea;
-            text-decoration:none;
-        }
-        .link-login:hover{
-            color: #b20710;
-        }
-
 
         .form-group input[type="tel"] {
             width: 100%;
             padding: 10px;
             box-sizing: border-box;
             border: none;
-            border-bottom: 2px solid #3d2fea;
+            border-bottom: 2px solid #e50914;
             background-color: #333;
             color: #fff;
             margin-top: 8px;
             font-size: 1rem;
-        }
-        input ,input[type="tel"]{
-            border-radius: 5px;
-        }
-
-        input:hover ,input[type="tel"]:hover{
-            border-bottom: 2px solid #e50914;
         }
         
         .alert-container {
@@ -152,10 +137,10 @@
             </div>
             <div class="form-group">
                 <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="number" id="phone" name="phone" min="1000000000" max="9999999999" required>
             </div>
             <button type="submit" class="signup-button">Sign Up</button>
-            <p class="login-link">Already have an account? <a href="login.php" class="link-login">Log in</a></p>
+            <p class="login-link">Already have an account? <a href="login.php">Log in</a></p>
         </form>
     </div>
     <?php
