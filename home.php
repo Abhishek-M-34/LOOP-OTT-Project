@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 session_start();
 
 // Check if the user is logged in, redirect to login if not
@@ -707,6 +708,7 @@ try {
             </ul>
         </nav>
     </header>
+    <h1>pranav xxx</h1>
     <div class="slideshow-container">
         <!-- Slideshow images will be displayed here -->
         <?php
