@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 session_start();
 // Check if the user is logged in, redirect to login if not
 if (!isset($_SESSION['user_email'])) {
@@ -254,7 +255,7 @@ if ($series !== null && !empty($series)) {
         <main class="table" id="customers_table">
             <section class="table__header">
                 <h1>Series Management</h1>
-                <button class="toggle-button" onclick="switchToMovieUpload()">Go To Series Management</button>
+                <button class="toggle-button" onclick="switchToMovieManagement()">Go To Series Management</button>
                 <div class="input-group">
                     <input type="search" placeholder="Search Data...">
                     <img src="images/search.png" alt="">
@@ -315,7 +316,7 @@ if ($series !== null && !empty($series)) {
             </section>
 
             <script>
-                function switchToMovieUpload() {
+                function switchToMovieManagement() {
                     window.location.href = 'video_management.php';
                 }
 
@@ -337,7 +338,7 @@ if ($series !== null && !empty($series)) {
                         var description = descriptionCell.textContent.trim();
                         descriptionCell.innerHTML = '<input type="text" class="de" value="' + description + '">';
                     }
-
+                       
                     button.style.display = 'none';
                     row.querySelector('button.save').style.display = 'inline';
                     console.log("Edit button clicked");
@@ -369,9 +370,10 @@ if ($series !== null && !empty($series)) {
                 }
 
                 function deleteSerie(serieId) {
+                    
                     // Send an AJAX request to delete the series
                     var xhr = new XMLHttpRequest();
-                    xhr.open('POST', 'delete_series.php', true);
+                    xhr.open('POST', 'serie_delete.php', true);
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     xhr.onload = function () {
                         if (xhr.status === 200) {
@@ -381,7 +383,7 @@ if ($series !== null && !empty($series)) {
                     xhr.send('id=' + serieId);
                 }
             </script>
-
+            <script src="script.js"></script>
         </main>
     </body>
 
