@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 session_start();
 
 // Check if the user is logged in
@@ -76,8 +77,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt = $conn->prepare("UPDATE payment_request SET premium_end_time = ? WHERE id = ?");
                 $stmt->bind_param("si", $premium_end_time, $payment_id);
                 $stmt->execute();
-            } else {
-                echo "Payment request not found or already accepted.";
+                echo "<script>alert('Payment accepted.');</script>";
+            } else { 
+                echo "<script>alert('Payment request not found or already accepted.');</script>";
             }
         }
     }
