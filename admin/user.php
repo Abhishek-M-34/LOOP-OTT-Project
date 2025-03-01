@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 session_start();
 // Check if the user is logged in, redirect to login if not
 if (!isset($_SESSION['user_email'])) {
@@ -27,7 +28,7 @@ function fetchUsers($pdo, $offset, $limit, $searchQuery = '')
     if (!empty($searchQuery)) {
         $searchCondition = " WHERE email LIKE :searchQuery OR mobile_number LIKE :searchQuery";
     }
-    $stmt = $pdo->prepare("SELECT user_id, email, mobile_number, account_type FROM users $searchCondition LIMIT :offset, :limit");
+    $stmt = $pdo->prepare("SELECT user_id, email, mobile_number, account_type FROM User $searchCondition LIMIT :offset, :limit");
     if (!empty($searchQuery)) {
         $stmt->bindValue(':searchQuery', "%$searchQuery%", PDO::PARAM_STR);
     }
@@ -277,7 +278,6 @@ if (!$users) {
             xhr.send(data);
         }
     </script>
-
+    <script src="script.js"></script>
 </body>
-
 </html>
