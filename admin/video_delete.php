@@ -1,8 +1,10 @@
 <?php
+# Edited by Amish
 session_start();
-// Check if the user is logged in, redirect to login if not
+
+// Check if the user is logged in
 if (!isset($_SESSION['user_email'])) {
-    header("Location: ../login.php"); // Redirect to your login page
+    echo json_encode(["status" => "error", "message" => "Unauthorized access."]);
     exit();
 }
 
@@ -12,61 +14,50 @@ $dbname = "ott";
 $username = "root";
 $password = "";
 
-// Establish MySQL database connection using mysqli
+// Establish MySQL database connection
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
 // Check connection
 if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
+    die(json_encode(["status" => "error", "message" => "Database connection failed: " . $mysqli->connect_error]));
 }
 
-// Function to delete video and associated slideshow images
-function deleteVideo($mysqli, $videoId)
-{
-    // Start a transaction
+// Check if the video ID is provided via POST
+if (isset($_POST['id'])) {
+    $videoId = $_POST['id'];
+
+    // Start transaction to ensure consistency
     $mysqli->begin_transaction();
 
     try {
-        // Delete associated records from slideshow_images table
+        // Delete associated records from slideshow_images (if applicable)
         $stmtImages = $mysqli->prepare("DELETE FROM slideshow_images WHERE link_id = ?");
-        $stmtImages->bind_param("i", $videoId); // 'i' for integer type
+        $stmtImages->bind_param("i", $videoId);
         $stmtImages->execute();
+        $stmtImages->close();
 
-        // Delete the video record from the links table
+        // Delete the video from links table
         $stmt = $mysqli->prepare("DELETE FROM links WHERE id = ?");
-        $stmt->bind_param("i", $videoId); // 'i' for integer type
+        $stmt->bind_param("i", $videoId);
         $stmt->execute();
 
-        // Commit the transaction
-        $mysqli->commit();
+        // Check if any rows were affected
+        if ($stmt->affected_rows > 0) {
+            $mysqli->commit();
+            echo json_encode(["status" => "success", "message" => "Video deleted successfully."]);
+        } else {
+            throw new Exception("Video not found or already deleted.");
+        }
 
-        return true;
-    } catch (mysqli_sql_exception $e) {
-        // Rollback the transaction on error
+        $stmt->close();
+    } catch (Exception $e) {
         $mysqli->rollback();
-        return false;
+        echo json_encode(["status" => "error", "message" => "Error deleting video: " . $e->getMessage()]);
     }
-}
-
-// Check if videoId is provided via POST request
-if (isset($_POST['videoId'])) {
-    $videoId = $_POST['videoId'];
-
-    // Call the deleteVideo function and handle the result
-    $result = deleteVideo($mysqli, $videoId);
-    if ($result) {
-        echo "Video deleted successfully.";
-    } else {
-        echo "Error deleting video.";
-    }
-
-    // Redirect to video_management.php after deletion
-    header("Location: video_management.php");
-    exit();
 } else {
-    echo "Invalid request.";
+    echo json_encode(["status" => "error", "message" => "Invalid request. Video ID is required."]);
 }
 
-// Close the database connection
+// Close database connection
 $mysqli->close();
 ?>
