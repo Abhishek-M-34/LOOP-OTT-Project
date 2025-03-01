@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 // Start session and check if the user is logged in
 session_start();
 if (!isset($_SESSION['user_email'])) {
