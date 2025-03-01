@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 // Database connection details
 $host = "localhost";
 $dbname = "ott";
