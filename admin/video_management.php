@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 session_start();
 // Check if the user is logged in, redirect to login if not
 if (!isset($_SESSION['user_email'])) {
@@ -37,6 +38,14 @@ function fetchVideos($mysqli, $offset, $limit, $searchQuery = null)
     // Prepare the statement
     $stmt = $mysqli->prepare($query);
 
+    //
+    // 🔴 Check if prepare() failed
+    if (!$stmt) {
+        die("SQL Prepare Error: " . $mysqli->error); // Debugging output
+    }
+    //
+
+
     // If a search query is provided, bind the search parameter
     if ($searchQuery !== null) {
         $searchParam = "%$searchQuery%";
@@ -45,7 +54,10 @@ function fetchVideos($mysqli, $offset, $limit, $searchQuery = null)
         $stmt->bind_param('ii', $offset, $limit);
     }
 
-    $stmt->execute();
+    $stmt->execute();//
+    if (!$stmt->execute()) {
+        die("Execute Error: " . $stmt->error);
+    }//
 
     // Get result
     $result = $stmt->get_result();
@@ -304,7 +316,7 @@ if ($videos !== null && !empty($videos)) {
         <main class="table" id="customers_table">
             <section class="table__header">
                 <h1>Video Management</h1>
-                <button class="toggle-button" onclick="switchToMovieUpload()">Go To Series Management</button>
+                <button class="toggle-button" onclick="switchToSeriesManagement()">Go To Series Management</button>
                 <div class="input-group">
                     <input type="search" placeholder="Search Data...">
                     <img src="images/search.png" alt="">
@@ -371,6 +383,11 @@ if ($videos !== null && !empty($videos)) {
         </main>
 
         <script>
+            //switch to series management
+            function switchToSeriesManagement() {
+                    window.location.href = 'series_man.php';
+                }
+
             // JavaScript for edit/save functionality
             function editVideo(button) {
                 var row = button.closest('tr');
@@ -432,7 +449,7 @@ if ($videos !== null && !empty($videos)) {
 
                 if (confirm('Are you sure you want to delete this video?')) {
                     var xhr = new XMLHttpRequest();
-                    xhr.open('POST', 'delete_video.php', true);
+                    xhr.open('POST', 'video_delete.php', true);
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     xhr.onload = function () {
                         if (xhr.status === 200) {
@@ -444,7 +461,7 @@ if ($videos !== null && !empty($videos)) {
                 }
             }
         </script>
-
+        <script src="script.js"></script>
     </body>
 
     </html>
