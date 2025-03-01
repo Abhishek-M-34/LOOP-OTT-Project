@@ -1,4 +1,5 @@
-<?php
+series<?php
+# Edited by Amish
 // Start session and check if the user is logged in
 session_start();
 if (!isset($_SESSION['user_email'])) {
@@ -30,7 +31,7 @@ if ($conn->connect_error) {
 $seriesId = $_GET['series_id'];
 
 // Fetch series details from the seasons table
-$sql = "SELECT * FROM seasons WHERE id = ?";
+$sql = "SELECT * FROM seasons WHERE series_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $seriesId);  // Bind series ID as integer
 $stmt->execute();
@@ -314,6 +315,8 @@ $conn->close();
             <p><?php echo htmlspecialchars($series['description']); ?></p>
             <!-- Display episode dropdown -->
             <label for="episodeSelect">Select Episode:</label>
+
+
             <select id="episodeSelect">
                 <?php foreach ($episodes as $episode) : ?>
                     <?php if (!isset($currentSeason) || $currentSeason != $episode['season_number']) : ?>
@@ -329,6 +332,8 @@ $conn->close();
                     <?php endforeach; ?>
                         </optgroup> <!-- Close the last season group -->
             </select>
+
+                                
             <!-- Add watch series button -->
             <button class="watch-series-btn" onclick="playEpisode()">Watch Episode</button>
         </div>
