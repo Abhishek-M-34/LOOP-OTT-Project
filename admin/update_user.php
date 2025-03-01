@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 // Check if the necessary parameters are set
 if (isset($_POST['userId'], $_POST['email'], $_POST['phone'])) {
     // Database connection details
