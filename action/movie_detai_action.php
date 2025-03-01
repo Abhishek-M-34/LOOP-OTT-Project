@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 // Connect to your database (replace with your database credentials)
 $servername = "localhost";
 $username = "root";
