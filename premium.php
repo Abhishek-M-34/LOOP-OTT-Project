@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 session_start();
 
 // Check if the user is logged in
@@ -93,6 +94,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Set the initial status for the payment request
             $status = 'Pending';
+
+            
 
             // Prepare and execute the SQL statement to insert the payment request
             $stmt = $pdo->prepare("INSERT INTO payment_request (user_email, plan, price, payment_time, utr_number, status) VALUES (?, ?, ?, ?, ?, ?)");
