@@ -1,4 +1,5 @@
 <?php
+# Edited by Amish
 // Start the session
 session_start();
 
@@ -35,9 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if password criteria are not met
     if (strlen($password) < 6 || !$uppercase || !$numeric || !$symbol) {
-        echo "<script>alert('Password must be at least 6 characters long and contain at least one uppercase letter, one numeric character, and one symbol.');</script>";
+        echo "<script>alert('Password must be at least 6 characters long and contain at least one uppercase letter, one numeric character, and one symbol.');
         // Redirect to index.php as password criteria are not met
-        header("Location: ../index.php");
+        window.location.href = '../index.php';
+        </script>";
         exit();
     }
 
@@ -50,7 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         // Email already exists, redirect to index.php
-        header("Location: ../index.php");
+        echo "<script>alert('Email Already Exists.');
+        window.location.href = '../index.php';
+        </script>";
         exit();
     }
     $stmt->close();
