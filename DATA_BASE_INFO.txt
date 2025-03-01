@@ -63,7 +63,7 @@ Data base Name : ott
      ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci
 
 
-    6) lins ---> CREATE TABLE `links` (
+    6) links ---> CREATE TABLE `links` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `title` varchar(225) DEFAULT NULL,
     `image_link` varchar(255) DEFAULT NULL,
@@ -76,7 +76,7 @@ Data base Name : ott
      ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci
 
 
-    7) episodea ---> CREATE TABLE `episodes` (
+    7) episodes ---> CREATE TABLE `episodes` (
     `file_name` varchar(255) DEFAULT NULL,
     `episode_number` varchar(255) DEFAULT NULL,
     `season_id` varchar(255) DEFAULT NULL,
