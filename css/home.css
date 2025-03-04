@@ -1,0 +1,132 @@
+:root {
+    --primary-bg: linear-gradient(to left, #1a1a2e, #3a3a3a); /* Dark gradient */
+    --secondary-color: #222; /* Accent color */
+    --text-color: #e0e0e0; /* Light text */
+    --hover-effect: #e94560; /* Hover effect color */
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --shadow-effect: rgba(0, 0, 0, 0.3);
+}
+
+/* Remove scrollbar */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--primary-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Navbar Styles */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--secondary-color);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px var(--shadow-effect);
+}
+
+header img {
+    max-width: 50px; /* Smaller logo */
+}
+
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+   margin-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--hover-effect);
+}
+
+/* Movie Items */
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie-item {
+    margin: 10px;
+    width: 200px;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 5px;
+    overflow: hidden;
+    background: var(--card-bg);
+    box-shadow: 0 4px 6px var(--shadow-effect);
+    position: relative;
+}
+
+.movie-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Hover Effect */
+.movie-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px var(--hover-effect);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    header {
+        padding: 5px 10px;
+    }
+
+    header img {
+        max-width: 30px;
+    }
+
+    nav ul li {
+        margin: 0 5px;
+    }
+
+    nav a {
+        font-size: 10px;
+    }
+
+    .movie-item {
+        width: 150px;
+    }
+}
