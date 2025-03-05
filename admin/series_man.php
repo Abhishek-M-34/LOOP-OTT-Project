@@ -1,5 +1,4 @@
 <?php
-# Edited by Amish
 session_start();
 // Check if the user is logged in, redirect to login if not
 if (!isset($_SESSION['user_email'])) {
