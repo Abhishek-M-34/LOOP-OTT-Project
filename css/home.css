@@ -1,132 +1,116 @@
-:root {
-    --primary-bg: linear-gradient(to left, #1a1a2e, #3a3a3a); /* Dark gradient */
-    --secondary-color: #222; /* Accent color */
-    --text-color: #e0e0e0; /* Light text */
-    --hover-effect: #e94560; /* Hover effect color */
-    --card-bg: rgba(255, 255, 255, 0.1);
-    --shadow-effect: rgba(0, 0, 0, 0.3);
-}
-
-/* Remove scrollbar */
-::-webkit-scrollbar {
-    display: none;
-}
-
-/* Global Styles */
+//code by Abishek
 body {
-    font-family: 'Arial', sans-serif;
-    background: var(--primary-bg);
-    color: var(--text-color);
-    line-height: 1.6;
+    background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+    color: white;
+    font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
-/* Navbar Styles */
 header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: var(--secondary-color);
-    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 6px var(--shadow-effect);
-}
-
-header img {
-    max-width: 50px; /* Smaller logo */
-}
-
-nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-end;
-   margin-right: 20px;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
 }
 
 nav ul {
     list-style: none;
-    display: flex;
     padding: 0;
     margin: 0;
+    display: flex;
+    gap: 15px;
 }
 
-nav ul li {
-    margin: 0 15px;
-}
-
-nav a {
+nav ul li a {
+    color: white;
     text-decoration: none;
-    color: var(--text-color);
-    font-weight: bold;
-    font-size: 14px;
-    transition: color 0.3s ease;
+    font-size: 18px;
+    transition: color 0.3s;
 }
 
-nav a:hover {
-    color: var(--hover-effect);
+nav ul li a:hover {
+    color: #ffcc00;
 }
 
-/* Movie Items */
+#movies-heading, #upcomingMoviesContainer h2 {
+    font-size: 28px;
+    margin-top: 20px;
+    text-align: center;
+    color: #ffcc00;
+}
+
 .movie-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
 .movie-item {
-    margin: 10px;
-    width: 200px;
-    transition: transform 0.3s ease-in-out;
-    border-radius: 5px;
-    overflow: hidden;
-    background: var(--card-bg);
-    box-shadow: 0 4px 6px var(--shadow-effect);
-    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.movie-item:hover {
+    transform: scale(1.05);
 }
 
 .movie-item img {
+    width: 200px;
+    height: 300px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.caption {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #ffcc00;
+}
+
+.no-movies {
+    font-size: 20px;
+    color: #ffcc00;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.slideshow-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.mySlides {
+    display: none;
+    text-align: center;
+}
+
+.mySlides img {
     width: 100%;
     height: auto;
-    display: block;
-    border-radius: 5px 5px 0 0;
+    border-radius: 10px;
 }
 
-/* Hover Effect */
-.movie-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 8px var(--hover-effect);
-}
-
-/* Footer */
-footer {
-    text-align: center;
+.overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
     padding: 10px;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-}
-
-/* Responsive Design */
-@media screen and (max-width: 600px) {
-    header {
-        padding: 5px 10px;
-    }
-
-    header img {
-        max-width: 30px;
-    }
-
-    nav ul li {
-        margin: 0 5px;
-    }
-
-    nav a {
-        font-size: 10px;
-    }
-
-    .movie-item {
-        width: 150px;
-    }
+    border-radius: 5px;
+    color: #ffcc00;
+    font-size: 18px;
+    text-align: center;
 }
