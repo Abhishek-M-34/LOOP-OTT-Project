@@ -1,5 +1,5 @@
 <?php
-# Edited by Amish
+//edited by Abhishek
 session_start();
 // Check if the user is logged in, redirect to login if not
 if (!isset($_SESSION['user_email'])) {
@@ -75,144 +75,7 @@ $total_revenue = $row_revenue['total_revenue'] ?? 0; // Default to 0 if no reven
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        body,
-        h1,
-        h2,
-        h3,
-        p,
-        ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Apply a global box-sizing border-box for easier layout calculations */
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            color: #fff;
-        }
-
-        /* Style the header section */
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header img {
-            max-width: 50px;
-            /* Adjust the max-width as needed */
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 15px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-size: 14px;
-            /* Adjust the font size */
-        }
-
-        nav ul li a i {
-            font-size: 24px;
-            /* Adjust the font size as needed */
-        }
-
-        /* Style the main content section */
-        main {
-            padding: 20px;
-        }
-
-        .row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .a {
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            flex-basis: 48%;
-        }
-
-        .card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            flex-basis: 48%;
-            margin-top: 20px;
-        }
-
-        .card h2 {
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-
-        .card1 {
-            background: linear-gradient(to right, #ff6a00, #ee0979);
-            /* Gradient from orange to pink */
-        }
-
-        .card2 {
-            background: linear-gradient(to right, #4CAF50, #2196F3);
-            /* Gradient from green to blue */
-        }
-
-        .card3 {
-            background: linear-gradient(to right, #FFC107, #FF5722);
-            /* Gradient from yellow to orange */
-        }
-
-        .card4 {
-            background: linear-gradient(to right, #9C27B0, #673AB7);
-            /* Gradient from purple to indigo */
-        }
-
-        .card5 {
-            background: linear-gradient(to right, #FFC107, #FF9800);
-            /* Gradient from yellow to amber */
-        }
-
-        .card {
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            flex-basis: 48%;
-            color: #fff;
-            /* Set text color to white */
-            text-align: center;
-            /* Center align text */
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="../css/admin_home.css">
 
 </head>
 
@@ -233,6 +96,9 @@ $total_revenue = $row_revenue['total_revenue'] ?? 0; // Default to 0 if no reven
             </ul>
         </nav>
     </header>   
+    <main>
+
+
     <div class="row">
         <a class="a" href="video_management.php" style="text-decoration: none; color: inherit;">
             <div class="card card1">
@@ -273,8 +139,5 @@ $total_revenue = $row_revenue['total_revenue'] ?? 0; // Default to 0 if no reven
         </div>
     </div>
     </main>
-    <script src="script.js"></script>
-
 </body>
-
 </html>
