@@ -1,4 +1,4 @@
-series<?php
+<?php
 # Edited by Amish
 // Start session and check if the user is logged in
 session_start();
@@ -27,54 +27,48 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch series details based on the provided series ID from seasons table
-$seriesId = $_GET['series_id'];
+// Get series ID from URL
+$seriesId = intval($_GET['series_id']);
 
-// Fetch series details from the seasons table
-$sql = "SELECT * FROM seasons WHERE series_id = ?";
+// Fetch series details from the series table first
+$sql = "SELECT * FROM series WHERE series_id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $seriesId);  // Bind series ID as integer
+$stmt->bind_param("i", $seriesId);
 $stmt->execute();
-$series = $stmt->get_result()->fetch_assoc(); // Fetch the result
+$series_details = $stmt->get_result()->fetch_assoc();
 
 // Check if series exists, if not redirect or handle error
-if (!$series) {
+if (!$series_details) {
     echo "Series not found.";
     exit();
 }
 
-// Fetch episode details based on the series ID from episodes table
-$sql = "SELECT e.file_name, e.episode_number, s.season_number 
-        FROM episodes e 
-        JOIN seasons s ON e.season_id = s.id 
-        WHERE s.series_id = ?";
+// Fetch all seasons for this series
+$sql = "SELECT * FROM seasons WHERE series_id = ? ORDER BY season_number ASC";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $seriesId);  // Bind series ID as integer
+$stmt->bind_param("i", $seriesId);
 $stmt->execute();
-$episodes = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); // Fetch all episodes
+$seasons = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Check if episodes exist
-if (!$episodes) {
-    $episodes = array(); // No episodes found
-}
-
-// Fetch series details from the series table
-$sql = "SELECT * FROM series WHERE series_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $seriesId);  // Bind series ID as integer
-$stmt->execute();
-$series_details = $stmt->get_result()->fetch_assoc(); // Fetch the result
-
-// If the series details are not found, handle it
-if (!$series_details) {
-    echo "Series details not found.";
-    exit();
+// Fetch all episodes for this series, grouped by season
+$episodes = [];
+if (!empty($seasons)) {
+    foreach ($seasons as $season) {
+        $sql = "SELECT * FROM episodes WHERE season_id = ? ORDER BY episode_number ASC";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $season['id']);
+        $stmt->execute();
+        $seasonEpisodes = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        
+        if (!empty($seasonEpisodes)) {
+            $episodes[$season['season_number']] = $seasonEpisodes;
+        }
+    }
 }
 
 // Close the connection
 $conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +76,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($series['title']); ?> - Series Detail</title>
+    <title><?php echo htmlspecialchars($series_details['title']); ?> - Series Detail</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <style>
         /* Add your CSS styles here */
@@ -307,46 +301,52 @@ $conn->close();
     <main>
         <!-- Display series poster -->
         <div class="series-poster">
-            <img src="<?php echo htmlspecialchars($series['image_path']); ?>" alt="<?php echo htmlspecialchars($series['title']); ?>">
+            <img src="<?php echo htmlspecialchars($series_details['image_path']); ?>" alt="<?php echo htmlspecialchars($series_details['title']); ?>">
         </div>
         <!-- Display series description -->
         <div class="series-description">
-            <h2><?php echo htmlspecialchars($series['title']); ?></h2>
-            <p><?php echo htmlspecialchars($series['description']); ?></p>
+            <h2><?php echo htmlspecialchars($series_details['title']); ?></h2>
+            <p><?php echo htmlspecialchars($series_details['description']); ?></p>
+            
             <!-- Display episode dropdown -->
             <label for="episodeSelect">Select Episode:</label>
-
-
             <select id="episodeSelect">
-                <?php foreach ($episodes as $episode) : ?>
-                    <?php if (!isset($currentSeason) || $currentSeason != $episode['season_number']) : ?>
-                        <?php if (isset($currentSeason)) : ?>
-                            </optgroup> <!-- Close previous season group -->
-                        <?php endif; ?>
-                        <optgroup label="Season <?php echo htmlspecialchars($episode['season_number']); ?>" class="season-group">
-                        <?php endif; ?>
-                        <option value="<?php echo htmlspecialchars($episode['file_name']); ?>" class="episode-option">
-                            Episode <?php echo htmlspecialchars($episode['episode_number']); ?>
-                        </option>
-                        <?php $currentSeason = $episode['season_number']; ?>
+                <?php if (empty($episodes)): ?>
+                    <option value="">No episodes available</option>
+                <?php else: ?>
+                    <?php foreach ($episodes as $seasonNumber => $seasonEpisodes): ?>
+                        <optgroup label="Season <?php echo htmlspecialchars($seasonNumber); ?>" class="season-group">
+                            <?php foreach ($seasonEpisodes as $episode): ?>
+                                <option value="<?php echo htmlspecialchars($episode['file_name']); ?>" class="episode-option">
+                                    Episode <?php echo htmlspecialchars($episode['episode_number']); ?><?php echo !empty($episode['title']) ? " - " . htmlspecialchars($episode['title']) : ""; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </optgroup>
                     <?php endforeach; ?>
-                        </optgroup> <!-- Close the last season group -->
+                <?php endif; ?>
             </select>
-
                                 
             <!-- Add watch series button -->
             <button class="watch-series-btn" onclick="playEpisode()">Watch Episode</button>
         </div>
     </main>
 
-
     <script>
         // JavaScript function to play the selected episode
         function playEpisode() {
             var select = document.getElementById("episodeSelect");
+            if (select.selectedIndex < 0) {
+                alert("Please select an episode to watch.");
+                return;
+            }
+            
             var selectedFileName = select.options[select.selectedIndex].value;
-            // Redirect to the selected episode's file
-            window.open(selectedFileName, "_blank");
+            if (selectedFileName) {
+                // Redirect to the selected episode's file
+                window.open(selectedFileName, "_blank");
+            } else {
+                alert("No episode file available.");
+            }
         }
     </script>
 </body>
