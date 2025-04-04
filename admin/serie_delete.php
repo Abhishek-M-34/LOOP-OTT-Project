@@ -62,9 +62,9 @@ function deleteSeries($conn, $serieId)
     }
 }
 
-// Check if serieId is provided via POST request
-if (isset($_POST['serieId'])) {
-    $serieId = intval($_POST['serieId']);
+// Check if id is provided via POST request (match the parameter name used in your JavaScript)
+if (isset($_POST['id'])) {
+    $serieId = intval($_POST['id']);
 
     // Call the deleteSeries function and handle the result
     $result = deleteSeries($conn, $serieId);
@@ -74,7 +74,7 @@ if (isset($_POST['serieId'])) {
         echo "Error deleting series.";
     }
 } else {
-    echo "Invalid request.";
+    echo "Invalid request. No ID provided.";
 }
 
 // Close the database connection
