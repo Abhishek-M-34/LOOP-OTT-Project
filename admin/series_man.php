@@ -65,6 +65,27 @@ function fetchSeries($pdo, $offset, $limit, $searchQuery = null)
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// Create update_series.php functionality directly in this file
+if (isset($_POST['update_series'])) {
+    try {
+        // Get and sanitize input
+        $serieId = intval($_POST['id']);
+        $title = htmlspecialchars($_POST['title']);
+        $description = htmlspecialchars($_POST['description']);
+
+        // Update series information in the database
+        $stmt = $pdo->prepare("UPDATE series SET title = :title, description = :description WHERE series_id = :id");
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $serieId, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        echo "Series updated successfully";
+        exit;
+    } catch (PDOException $e) {
+        die("Error updating series: " . $e->getMessage());
+    }
+}
 
 // Pagination parameters
 $limit = 25; // Number of series per page
@@ -203,7 +224,6 @@ if ($series !== null && !empty($series)) {
                     console.log("Edit button clicked");
                 }
 
-
                 function saveSerie(button) {
                     var row = button.parentElement.parentElement;
                     var serieId = row.getAttribute('data-id'); // Retrieve serie ID using data-id attribute
@@ -214,18 +234,24 @@ if ($series !== null && !empty($series)) {
 
                     // Send an AJAX request to update the series
                     var xhr = new XMLHttpRequest();
-                    xhr.open('POST', 'update_series.php', true);
+                    xhr.open('POST', window.location.href, true);
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     xhr.onload = function () {
                         if (xhr.status === 200) {
-                            titleInput.disabled = true;
-                            descriptionInput.disabled = true;
+                            // Update the table cells back to text
+                            var titleCell = row.querySelector('td:nth-child(3)');
+                            var descriptionCell = row.querySelector('td:nth-child(4)');
+                            
+                            titleCell.textContent = title;
+                            descriptionCell.textContent = description;
+                            
+                            // Show edit button and hide save button
                             row.querySelector('button.save').style.display = 'none';
                             row.querySelector('button.edit').style.display = 'inline';
                         }
                     };
 
-                    xhr.send('id=' + serieId + '&title=' + title + '&description=' + description);
+                    xhr.send('update_series=1&id=' + serieId + '&title=' + encodeURIComponent(title) + '&description=' + encodeURIComponent(description));
                 }
 
                 function deleteSerie(serieId) {
