@@ -90,148 +90,8 @@ if ($series !== null && !empty($series)) {
         <title>Admin - Series Management</title>
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" type="text/css" href="style.css">
-        <style>
-            /* Global styles */
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f5f5f5;
-                color: #333;
-                line-height: 1.6;
-                padding-top: 60px;
-                /* Adjusted padding to accommodate the fixed header */
-            }
-
-            .container {
-                max-width: 100%;
-                margin: 0 auto;
-            }
-
-            /* Header styles */
-            header {
-                background-color: #000;
-                color: #fff;
-                padding: 10px 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                position: fixed;
-                top: 0;
-                width: 100%;
-                z-index: 1000;
-            }
-
-            header img {
-                max-width: 50px;
-            }
-
-            nav ul {
-                list-style: none;
-                display: flex;
-            }
-
-            nav ul li {
-                margin-right: 15px;
-            }
-
-            nav a {
-                text-decoration: none;
-                color: #fff;
-                font-weight: bold;
-            }
-
-            nav ul li:hover::before {
-                content: attr(title);
-                position: absolute;
-                background-color: #000;
-                color: #fff;
-                padding: 5px;
-                border-radius: 5px;
-                font-size: 12px;
-                white-space: nowrap;
-                top: -30px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            nav ul li a i {
-                font-size: 24px;
-            }
-
-            /* Button styles */
-            button {
-                padding: 8px 15px;
-                border: none;
-                background-color: #007bff;
-                color: #fff;
-                cursor: pointer;
-                border-radius: 4px;
-                transition: background-color 0.3s;
-            }
-
-            button:hover {
-                background-color: #0056b3;
-            }
-
-            button.save {
-                background-color: #28a745;
-            }
-
-            button.save:hover {
-                background-color: #218838;
-            }
-
-            button.delete {
-                background-color: #dc3545;
-            }
-
-            button.delete:hover {
-                background-color: #c82333;
-            }
-
-            /* Pagination styles */
-            .pagination {
-                margin-top: 20px;
-                text-align: center;
-            }
-
-            .pagination a {
-                color: #007bff;
-                display: inline-block;
-                padding: 8px 16px;
-                text-decoration: none;
-                transition: background-color 0.3s;
-            }
-
-            .pagination a.active {
-                background-color: #007bff;
-                color: white;
-            }
-
-            .pagination a:hover:not(.active) {
-                background-color: #ddd;
-            }
-
-            .de {
-                padding: 8px;
-                width: 100%;
-                border-radius: 4px;
-                border: 1px solid #ccc;
-            }
-
-            main.table {
-                width: 99vw;
-                height: 90vh;
-                background-color: #fff5;
-                margin-top: 0.5%;
-                margin-left: 0.5%;
-                backdrop-filter: blur(7px);
-                box-shadow: 0 0.4rem 0.8rem #0005;
-                border-radius: .8rem;
-                overflow: hidden;
-            }
-        </style>
-
+        <link rel="stylesheet" href="../css/styles.css">
+        <!-- <link rel="stylesheet" href="../css/series_man.css"> -->
     </head>
 
     <body>
@@ -254,12 +114,12 @@ if ($series !== null && !empty($series)) {
         <main class="table" id="customers_table">
             <section class="table__header">
                 <h1>Series Management</h1>
-                <button class="toggle-button" onclick="switchToMovieManagement()">Go To Series Management</button>
+                <button class="toggle-button" onclick="switchToMovieManagement()">Go To Video Management</button>
                 <div class="input-group">
                     <input type="search" placeholder="Search Data...">
                     <img src="images/search.png" alt="">
                 </div>
-                <div class="export__file">
+                <!-- <div class="export__file">
                     <label for="export-file" class="export__file-btn" title="Export File"></label>
                     <input type="checkbox" id="export-file">
                     <div class="export__file-options">
@@ -267,7 +127,7 @@ if ($series !== null && !empty($series)) {
                         <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
                         <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
                     </div>
-                </div>
+                </div> -->
             </section>
             <section class="table__body">
                 <table>
