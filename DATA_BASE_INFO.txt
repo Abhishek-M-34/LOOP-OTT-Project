@@ -23,6 +23,32 @@ Data base Name : ott
       ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci
 
 
+     3) series  ---> CREATE TABLE `series` (
+    `series_id` int(20) NOT NULL AUTO_INCREMENT,
+    `season_id` varchar(100) DEFAULT NULL,
+    `season_number` varchar(255) DEFAULT NULL,
+    `title` varchar(255) DEFAULT NULL,
+    `description` varchar(255) DEFAULT NULL,
+    `image_path` varchar(255) DEFAULT NULL,
+    `current_status` varchar(255) DEFAULT NULL,
+    `uploading_date` varchar(255) DEFAULT NULL,
+    `episode_count` varchar(255) DEFAULT NULL,
+    `total_series` varchar(100) DEFAULT NULL,
+    `num_episodes` varchar(255) DEFAULT NULL,
+    `type` varchar(255) DEFAULT NULL,
+     PRIMARY KEY (`series_id`)
+     ) ENGINE = InnoDB AUTO_INCREMENT = 5 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci    (THERE MAY BE SOME ERRORS)
+
+
+    4) seasons  ---> CREATE TABLE `seasons` (
+    `id` varchar(255) DEFAULT NULL,
+    `series_id` varchar(255) DEFAULT NULL,
+    `season_number` varchar(255) DEFAULT NULL,
+    `num_episodes` varchar(255) DEFAULT NULL,
+    `title` varchar(255) DEFAULT NULL,
+    `description` varchar(255) DEFAULT NULL
+    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci     (THERE MAY BE SOME ERRORS)
+
 
    5) payment_request  --->  CREATE TABLE `payment_request` (
     `user_email` varchar(255) NOT NULL,
@@ -47,49 +73,16 @@ Data base Name : ott
     `uploading_date` varchar(255) DEFAULT NULL,
     `description` varchar(255) DEFAULT NULL,
      PRIMARY KEY (`id`)
-     ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_c
+     ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci
 
 
-
-
-
-
-    
-CREATE TABLE `series` (
-    `series_id` int(20) NOT NULL AUTO_INCREMENT,
-    `title` varchar(255) NOT NULL,
-    `description` text,
-    `image_path` varchar(255) DEFAULT NULL,
-    `current_status` varchar(100) DEFAULT NULL,
-    `uploading_date` date DEFAULT NULL,
-    `total_seasons` int DEFAULT NULL,
-    `type` varchar(100) DEFAULT NULL,
-    PRIMARY KEY (`series_id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
-
-CREATE TABLE `seasons` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `series_id` int(11) NOT NULL,
-    `season_number` int(11) NOT NULL,
-    `title` varchar(255) DEFAULT NULL,
-    `description` text,
-    `num_episodes` int(11) DEFAULT 0,
-    PRIMARY KEY (`id`),
-    KEY `series_id` (`series_id`),
-    CONSTRAINT `seasons_ibfk_1` FOREIGN KEY (`series_id`) REFERENCES `series` (`series_id`) ON DELETE CASCADE
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
-
-CREATE TABLE `episodes` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `season_id` int(11) NOT NULL,
-    `episode_number` int(11) NOT NULL,
-    `title` varchar(255) DEFAULT NULL,
-    `file_name` varchar(255) NOT NULL,
-    `description` text,
-    PRIMARY KEY (`id`),
-    KEY `season_id` (`season_id`),
-    CONSTRAINT `episodes_ibfk_1` FOREIGN KEY (`season_id`) REFERENCES `seasons` (`id`) ON DELETE CASCADE
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+    7) episodes ---> CREATE TABLE `episodes` (
+    `file_name` varchar(255) DEFAULT NULL,
+    `episode_number` varchar(255) DEFAULT NULL,
+    `season_id` varchar(255) DEFAULT NULL,
+    `episodes` varchar(255) DEFAULT NULL,
+    `id` varchar(255) DEFAULT NULL
+    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci
 
 
 NOTE: There are 7 Tables, some Tables may contain unwated columns. please be kind to remove it by your self.
