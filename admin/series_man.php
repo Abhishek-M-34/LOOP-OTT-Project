@@ -118,7 +118,7 @@ if ($series !== null && !empty($series)) {
     <body>
         <header>
             <!-- Add your logo and navigation here -->
-            <img src="../your-logo.png" alt="Your Logo">
+            <img src="../logo.png" alt="Your Logo">
             <nav>
                 <ul>
                     <!-- Add navigation links -->
@@ -127,7 +127,7 @@ if ($series !== null && !empty($series)) {
                     <li><a href="user.php"><i class='bx bxs-user'></i></i></a></li>
                     <li><a href="video_management.php"><i class='bx bxs-videos'></i></i></a></li>
                     <li><a href="payment_managemant.php"><i class='bx bxs-purchase-tag'></i></i></i></a></li>
-                    <li><a href="ad_upload.php"><i class='bx bx-cloud-upload'></i></a></li>
+                    <!-- <li><a href="ad_upload.php"><i class='bx bx-cloud-upload'></i></a></li> -->
                     <li><a href="../signout.php"><i class='bx bx-log-out-circle'></i></a></li>
                 </ul>
             </nav>

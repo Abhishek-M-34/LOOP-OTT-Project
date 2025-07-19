@@ -6,15 +6,17 @@
     <title>Series Upload Success</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            padding-top: 100px;
-        }
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* center vertically */
+    align-items: center;      /* center horizontally */
+    height: 100vh;            /* full viewport height */
+    font-family: Arial, sans-serif;
+    background: url(../freepik__upload__55965.jpeg);
+    background-size: cover;   /* optional: makes the image fill the background */
+    background-position: center;
+    color: #fff;
+}
         h1 {
             color: #007bff;
         }
@@ -32,6 +34,7 @@
         a:hover {
             text-decoration: underline;
         }
+
     </style>
 </head>
 <body>

@@ -76,13 +76,13 @@ $total_revenue = $row_revenue['total_revenue'] ?? 0; // Default to 0 if no reven
     <title>ADMIN</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/admin_home.css">
-
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
     <header>
         <!-- Add your logo and navigation here -->
-        <img src="../your-logo.png" alt="Your Logo">
+        <img src="../logo.png" alt="Your Logo">
         <nav>
             <ul>
                 <!-- Add navigation links -->
@@ -91,7 +91,7 @@ $total_revenue = $row_revenue['total_revenue'] ?? 0; // Default to 0 if no reven
                 <li><a href="user.php"><i class='bx bxs-user'></i></i></a></li>
                 <li><a href="video_management.php"><i class='bx bxs-videos'></i></i></a></li>
                 <li><a href="payment_managemant.php"><i class='bx bxs-purchase-tag'></i></i></i></a></li>
-                <li><a href="ad_upload.php"><i class='bx bx-cloud-upload'></i></a></li>
+                <!-- <li><a href="ad_upload.php"><i class='bx bx-cloud-upload'></i></a></li> -->
                 <li><a href="../signout.php"><i class='bx bx-log-out-circle'></i></a></li>
             </ul>
         </nav>

@@ -153,89 +153,14 @@ function calculateRemainingDays($premium_end_time)
     <title>Payment Management</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-
-
-        button {
-            padding: 8px 16px;
-            cursor: pointer;
-            border: none;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 4px;
-            text-transform: uppercase;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        button:active {
-            background-color: #3e8e41;
-        }
-
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header img {
-            max-width: 50px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 15px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        nav ul li a i {
-            font-size: 24px;
-        }
-
-        main.table {
-            width: 99vw;
-            height: 90vh;
-            background-color: #fff5;
-            margin-top: 0.5%;
-            margin-left: 0.5%;
-            backdrop-filter: blur(7px);
-            box-shadow: 0 0.4rem 0.8rem #0005;
-            border-radius: .8rem;
-            overflow: hidden;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/styles.css">
 
 </head>
 
 <body>
     <header>
         <!-- Add your logo and navigation here -->
-        <img src="../your-logo.png" alt="Your Logo">
+        <img src="../logo.png" alt="Your Logo">
         <nav>
             <ul>
                 <!-- Add navigation links -->
@@ -244,7 +169,7 @@ function calculateRemainingDays($premium_end_time)
                 <li><a href="user.php"><i class='bx bxs-user'></i></i></a></li>
                 <li><a href="video_management.php"><i class='bx bxs-videos'></i></i></a></li>
                 <li><a href="payment_managemant.php"><i class='bx bxs-purchase-tag'></i></i></i></a></li>
-                <li><a href="ad_upload.php"><i class='bx bx-cloud-upload'></i></a></li>
+                <!-- <li><a href="ad_upload.php"><i class='bx bx-cloud-upload'></i></a></li> -->
                 <li><a href="../signout.php"><i class='bx bx-log-out-circle'></i></a></li>
             </ul>
         </nav>
@@ -256,15 +181,17 @@ function calculateRemainingDays($premium_end_time)
                 <input type="search" placeholder="Search Data...">
                 <img src="images/search.png" alt="">
             </div>
-            <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"></label>
-                <input type="checkbox" id="export-file">
-                <div class="export__file-options">
-                    <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
-                    <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
-                </div>
-            </div>
+<div class="export__file">
+    <label for="export-file" class="export__file-btn" title="Export File"></label>
+    <input type="checkbox" id="export-file" hidden>
+
+    <div class="export__file-options">
+        <label>Export As &nbsp; &#10140;</label>
+        <button id="toJSON" type="button">JSON <img src="images/json.png" alt=""></button>
+        <button id="toCSV" type="button">CSV <img src="images/csv.png" alt=""></button>
+    </div>
+</div>
+
         </section>
         <section class="table__body">
             <table>
@@ -279,7 +206,6 @@ function calculateRemainingDays($premium_end_time)
                         <th>UTR Number</th>
                         <th>Status<span class="icon-arrow">&UpArrow;</span></th>
                         <th>Accept</th>
-                        <th>Decline</th>
 
                     </tr>
                 </thead>
@@ -297,13 +223,7 @@ function calculateRemainingDays($premium_end_time)
                             <td>
                                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <input type="hidden" name="payment_id" value="<?php echo $payment_request['id']; ?>">
-                                    <button type="submit" name="action" value="accept">Accept</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                    <input type="hidden" name="payment_id" value="<?php echo $payment_request['id']; ?>">
-                                    <button type="submit" name="action" value="decline">Decline</button>
+                                    <button class="edit" type="submit" name="action" value="accept">Accept</button>
                                 </form>
                             </td>
                         </tr>
