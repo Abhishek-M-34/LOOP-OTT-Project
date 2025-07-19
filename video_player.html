@@ -37,7 +37,10 @@
             }
         }
 
+
         .plyr {
+            height: 100vh;
+            width: auto;
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             align-items: center;
@@ -1455,22 +1458,18 @@
             margin-right: 10px;
         }
 
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .plyr__control {
-                font-size: 14px;
-            }
-        }
+      
     </style>
 </head>
 
 <body>
+    <div class="video-wrapper">
     <!-- Video element -->
     <video id="player" class="plyr" controls crossorigin>
         <!-- MP4 source -->
         <source id="video-source" type="video/mp4">
     </video>
-
+</div>
     <!-- Include Plyr and hls.js scripts -->
     <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>

@@ -82,230 +82,15 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        body,
-        h1,
-        h2,
-        h3,
-        p,
-        ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Apply a global box-sizing border-box for easier layout calculations */
-        * {
-            box-sizing: border-box;
-        }
-
-        /* Set a background color and font for the entire page */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Style the header section */
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header img {
-            max-width: 50px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 15px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        nav ul li a i {
-            font-size: 24px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        form {
-            margin-bottom: 20px;
-        }
-
-        input[type="text"] {
-            padding: 8px;
-            width: 70%;
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button[type="submit"] {
-            padding: 8px 12px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        .search-results {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .result-item {
-            width: 140px;
-            /* Adjust width for both laptop and mobile */
-            height: px;
-            /* Adjust height for both laptop and mobile */
-            margin: 25px;
-            /* Adjust margin as needed */
-        }
-
-        .result-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            
-        }
-
-        .title {
-            text-align: center;
-            margin-top: 5px;
-        }
-
-        /* Media query for mobile devices */
-        @media only screen and (max-width: 768px) {
-            .result-item {
-                width: calc(40% - 20px);
-                /* Adjust width for mobile */
-                height: 200px;
-                margin: 25px;
-                /* Adjust height for mobile */
-            }
-        }
-
-        .s {
-            margin-top: 10%;
-        }
-
-        header {
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            background-color: #000;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-size: 15px;
-        }
-
-        nav ul {
-            text-align: center;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            /* Adjust color as needed */
-        }
-
-        nav ul li a i {
-            margin-right: 5px;
-            font-size: 24px;
-        }
-
-        @media screen and (max-width: 600px) {
-
-            header {
-                position: fixed;
-                width: 100%;
-                z-index: 1000;
-                background-color: #000;
-                color: #fff;
-                padding: 7px 5px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            nav a {
-                text-decoration: none;
-                color: #fff;
-                font-weight: bold;
-                font-size: 10px;
-            }
-
-            nav ul li a i {
-                font-size: 17px;
-            }
-
-            nav ul li {
-                display: inline-block;
-                margin: 0px 2px;
-            }
-
-            nav a {
-                text-decoration: none;
-                color: #fff;
-                font-weight: bold;
-                font-size: 8px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/background-animation.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/search.css">
 </head>
 
 <body>
     <header>
         <!-- Add your logo and navigation here -->
-        <img src="your-logo.png" alt="Your Logo">
+        <img src="logo.png" alt="Your Logo">
         <nav>
             <ul>
                 <li><a href="home.php"><i class='bx bx-home'></i> home</a></li>
@@ -317,11 +102,61 @@ mysqli_close($conn);
             </ul>
         </nav>
     </header>
+
+<!-- Premium cinematic background -->
+<div class="cinema-background">
+    <!-- Main gradient background -->
+    <div class="bg-gradient"></div>
+    
+    <!-- Noise texture overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Light beams -->
+    <div class="light-beams">
+        <div class="beam"></div>
+        <div class="beam"></div>
+        <div class="beam"></div>
+    </div>
+    
+    <!-- Cinematic icons -->
+    <div class="cinema-icons">
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+    </div>
+    
+    <!-- Starry background -->
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
+    <!-- Bottom glow effect -->
+    <div class="bottom-glow"></div>
+</div>
+
+    
     <div class="container">
+    <div class="form-wrapper">
         <form method="POST" action="">
             <input type="text" class="s" name="search_query" placeholder="Search for movies and series" value="<?php echo $search_query; ?>">
             <button type="submit" name="search"><i class='bx bx-search'></i> Search</button>
         </form>
+</div>
         <!-- Display search results -->
         <?php if (!empty($search_results)) : ?>
             <div class="search-results">
@@ -344,7 +179,6 @@ mysqli_close($conn);
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-
 
         <script>
             // Function to reload the page after a delay

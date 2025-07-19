@@ -9,10 +9,10 @@
 </head>
 
 <body>
-    <img src="OIP.png" alt="Your Logo" class="logo">
+    <img src="logo.png" alt="Your Logo" class="logo">
 
     <div class="login-container">
-        <h1>Login</h1>
+        <h1>LOGIN</h1>
         <div class="alert-container" id="alertBox"></div>
         <form class="login-form" action="action/login_action.php" method="post">
             <div class="form-group">

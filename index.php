@@ -10,10 +10,10 @@
 
 <body>
     <!-- Your logo at the top corner -->
-    <img src="OIP.png" alt="Your Logo" class="logo">
+    <img src="logo.png" alt="Your Logo" class="logo">
 
     <div class="signup-container">
-        <h1>Sign Up</h1>
+        <h1>SIGN UP</h1>
         <div class="alert-container" id="alertBox"></div>
         <form class="signup-form" action="action/signup_process.php" method="post">
             <div class="form-group">
