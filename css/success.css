@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* center vertically */
+    align-items: center;      /* center horizontally */
+    height: 100vh;            /* full viewport height */
+    font-family: Arial, sans-serif;
+    background: url(../freepik__upload__55965.jpeg);
+    background-size: cover;   /* optional: makes the image fill the background */
+    background-position: center;
+    color: #fff;
+}
+
+
+        h1 {
+            color: #007bff;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }

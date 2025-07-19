@@ -47,14 +47,16 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HINDI MOVIE OTT</title>
+    <title>LOOP OTT Platfrom</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/background-animation.css">
 </head>
 
 <body>
     <header>
-        <img src="your-logo.png" alt="Your Logo">
+        <img class="logo" src="logo.png" alt="Your Logo">
         <nav>
             <ul>
                 <li><a href="home.php"><i class='bx bx-home'></i> home</a></li>
@@ -66,7 +68,59 @@ try {
             </ul>
         </nav>
     </header>
-
+<!-- Premium cinematic background -->
+<div class="cinema-background">
+    <!-- Main gradient background -->
+    <div class="bg-gradient"></div>
+    
+    <!-- Noise texture overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Light beams -->
+    <div class="light-beams">
+        <div class="beam"></div>
+        <div class="beam"></div>
+        <div class="beam"></div>
+    </div>
+    
+    <!-- Floating particles -->
+    <!-- <div class="cinema-particles">
+        <div class="cinema-particle"></div>
+        <div class="cinema-particle"></div>
+        <div class="cinema-particle"></div>
+        <div class="cinema-particle"></div>
+    </div> -->
+    
+    <!-- Cinematic icons -->
+    <div class="cinema-icons">
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+    </div>
+    
+    <!-- Starry background -->
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
+    <!-- Bottom glow effect -->
+    <div class="bottom-glow"></div>
+</div>
     <main>
         <div class="featured">
             <div class="movie-list">

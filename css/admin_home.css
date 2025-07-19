@@ -1,4 +1,4 @@
-//edited by abhishek
+/*edited by abhishek*/
 body,
 h1,
 h2,
@@ -14,88 +14,6 @@ ul {
     box-sizing: border-box;
 }
 
-/* Dark futuristic background */
-body {
-    background-image: url('../freepik__upload__55965.jpeg'); /* Adjust the path */
-    background-size: cover;  /* Ensures the image covers the full screen */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Keeps the image fixed while scrolling */
-    overflow: hidden;
-    position: relative;
-}
-
-
-
-/* Updated Navbar for Loop Style */
-header {
-    background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-    color: #fff;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-}
-
-header img {
-    max-width: 60px;
-    transition: transform 0.3s ease-in-out;
-}
-
-header img:hover {
-    transform: scale(1.1);
-}
-
-nav {
-    display: flex;
-    justify-content: flex-end;
-    flex-grow: 1;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-nav ul li {
-    display: inline-block;
-    position: relative;
-}
-
-nav a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 10px 15px;
-    transition: color 0.3s ease-in-out;
-    border-radius: 8px;
-}
-
-nav a:hover {
-    color: #ffcc00;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-nav ul li a i {
-    font-size: 20px;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover i {
-    color: #ffcc00;
-}
-
-/* Add Active Link Effect */
-nav ul li a.active {
-    color: #ffcc00;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-}
 
 /* Style the main content section */
 main {

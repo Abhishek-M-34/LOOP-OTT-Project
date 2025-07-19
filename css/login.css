@@ -1,21 +1,23 @@
 :root {
-    --primary-color: #3d2fea;
-    --secondary-color: #b20710;
+    --primary-color: #fefefe;
+    /* --secondary-color: #3d2fea; */
     --background-gradient-start: #1c1c1c;
     --background-gradient-end: #3a3a3a;
-    --form-bg-color: rgba(0, 0, 0, 0.85);
+    --form-bg-color: rgba(0, 0, 0, 0.4);
     --text-color: #f1f1f1;
     --input-bg-color: #222;
     --input-border-color: #444;
     --focus-border-color: var(--primary-color);
-    --focus-glow: rgba(61, 47, 250, 0.5);
-    --blur-effect: blur(30px) brightness(80%) saturate(200%) hue-rotate(340deg);
+    /* --focus-glow: rgba(61, 47, 250, 0.5); */
+    --blur-effect:  blur(12px) brightness(80%) saturate(200%) hue-rotate(340deg);
 }
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: linear-gradient(to left, var(--background-gradient-start), var(--background-gradient-end));
-    margin: 0;
+    background:url(../login.gif);
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    margin:0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,34 +40,34 @@ img.logo {
     background-color: var(--form-bg-color);
     padding: 50px;
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    /* box-shadow: 0 20px 40px rgba(255, 255, 255, 0.6); */
     width: 100%;
-    max-width: 400px;
+    max-width:  400px ;
     text-align: center;
     opacity: 0;
     animation: fadeIn 1s forwards 0.3s;
     transition: backdrop-filter 0.8s ease-in-out;
 }
 
-/* Swap colors & apply blur effect on focus */
+/* Simulated Color Swap: When any input is focused */
 .login-container:has(.form-group input:focus) {
-    --primary-color: #b20710;
-    --secondary-color: #3d2fea;
+    --primary-color: #00d440; 
     backdrop-filter: var(--blur-effect);
+    box-shadow: 0 20px 40px #55ff9999;
 }
 
 /* Heading Styled with Secondary Color */
 .login-container h1 {
     margin-bottom: 30px;
     font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--secondary-color);
+    font-weight: 900;
+    color: var(--primary-color);
     letter-spacing: 1px;
     animation: slideInFromLeft 1s ease-out;
 }
 
 .login-container:has(.form-group input:focus) h1 {
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 /* Form */
@@ -94,6 +96,7 @@ img.logo {
     border: 2px solid var(--input-border-color);
     border-radius: 12px;
     background-color: var(--input-bg-color);
+    background-color: transparent;
     color: var(--text-color);
     font-size: 1rem;
     margin-top: 8px;
@@ -111,8 +114,8 @@ img.logo {
 
 /* Updated Login Button */
 .login-button {
-    background-color: var(--secondary-color);
-    color: #fff;
+    background-color: var(--primary-color);
+    color: #1c1c1c;
     border: none;
     padding: 15px;
     border-radius: 12px;
@@ -125,23 +128,24 @@ img.logo {
 }
 
 .login-container:has(.form-group input:focus) .login-button {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
+    color:#fefefe;
 }
 
 .login-button:hover {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     transform: scale(1.05);
+    color:#fefefe;
 }
 
-.login-container:has(.form-group input:focus) .login-button:hover {
-    background-color: var(--primary-color);
-}
+/* .login-container:has(.form-group input:focus) .login-button:hover {
+    background-color: var(--secondary-color);
+} */
 
 /* Updated Login Link */
 .login-link {
     margin-top: 20px;
     font-size: 1rem;
-    color: var(--secondary-color);
     font-weight: 600;
 }
 
@@ -150,7 +154,7 @@ img.logo {
 }
 
 .login-link a {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 700;
 }

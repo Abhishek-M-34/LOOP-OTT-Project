@@ -1,20 +1,23 @@
 :root {
-    --primary-color: #3d2fea;
-    --secondary-color: #b20710;
+    --primary-color: #fefefe;
+    /* --secondary-color: #b20710; */
     --background-gradient-start: #1c1c1c;
     --background-gradient-end: #3a3a3a;
-    --form-bg-color: rgba(0, 0, 0, 0.85);
-    --text-color: #f1f1f1;
+    --form-bg-color: rgba(0, 0, 0, 0.4);
+    --text-color: #1c1c1c;
     --input-bg-color: #222;
     --input-border-color: #444;
     --focus-border-color: var(--primary-color);
-    --focus-glow: rgba(61, 47, 250, 0.5);
+    /* --focus-glow: #b20710; */
     --blur-effect: blur(12px) brightness(80%) saturate(200%) hue-rotate(340deg);
 }
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: linear-gradient(to left, var(--background-gradient-start), var(--background-gradient-end));
+    background-image:url(../home.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
     margin: 0;
     display: flex;
     align-items: center;
@@ -35,11 +38,12 @@ img.logo {
 
 .signup-container {
     background-color: var(--form-bg-color);
+    margin:20px;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.6);
     width: 100%;
-    max-width: 420px;
+    max-width: 400px;
     text-align: center;
     opacity: 0;
     animation: fadeIn 1s forwards 0.3s;
@@ -48,16 +52,16 @@ img.logo {
 
 /* Simulated Color Swap: When any input is focused */
 .signup-container:has(.form-group input:focus) {
-    --primary-color: #b20710;  /* Swap primary color */
-    --secondary-color: #3d2fea; /* Swap secondary color */
+    --primary-color: #ff2600; 
     backdrop-filter: var(--blur-effect);
 }
+
 
 /* Apply the "swapped" color */
 .signup-container h1 {
     margin-bottom: 30px;
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 900;
     color: var(--primary-color);
     letter-spacing: 1px;
     animation: slideInFromLeft 1s ease-out;
@@ -90,8 +94,8 @@ img.logo {
     box-sizing: border-box;
     border: 2px solid var(--input-border-color);
     border-radius: 8px;
-    background-color: var(--input-bg-color);
-    color: var(--text-color);
+    background-color:transparent;
+    color: #fdfdfd;
     font-size: 1rem;
     margin-top: 8px;
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease;
@@ -106,9 +110,10 @@ img.logo {
     outline: none;
 }
 
+
 .signup-button {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--text-color);
     border: none;
     padding: 15px;
     border-radius: 8px;
@@ -122,16 +127,18 @@ img.logo {
 
 .signup-container:has(.form-group input:focus) .signup-button {
     background-color: var(--primary-color);
+    color: #fefefe;
 }
 
 .signup-button:hover {
     background-color: var(--secondary-color);
+    color: #fefefe;
     transform: scale(1.05);
 }
 
-.signup-container:has(.form-group input:focus) .signup-button:hover {
+/* .signup-container:has(.form-group input:focus) .signup-button:hover {
     background-color: var(--secondary-color);
-}
+} */
 
 .login-link {
     margin-top: 20px;
@@ -139,7 +146,7 @@ img.logo {
     color: var(--primary-color);
 }
 
-.login-container:has(.form-group input:focus) .login-link {
+.signup-container:has(.form-group input:focus) .login-link {
     color: var(--primary-color);
 }
 
@@ -157,6 +164,7 @@ img.logo {
     text-decoration: underline;
 }
 
+/* Alert Box */
 .alert-container {
     display: none;
     position: fixed;

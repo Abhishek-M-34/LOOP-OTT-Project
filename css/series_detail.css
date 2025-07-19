@@ -1,0 +1,223 @@
+/* General Reset and Background */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #d4ffd4;
+    position: relative;
+  }
+  
+  .bg-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 15% 15%, rgba(77, 255, 130, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(34, 238, 105, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 75% 25%, rgba(178, 250, 24, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 25% 65%, rgba(29, 245, 216, 0.2) 0%, transparent 40%),
+        linear-gradient(45deg, #0a0a12 0%, #1a1a2e 100%);
+    z-index: -9;
+    animation: pulseGradient 18s ease infinite alternate;
+    background-size: 200% 200%;
+}
+  
+  /* Floating Particles */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatParticles 60s linear infinite;
+  }
+  
+  /* Dynamic Cube Background */
+  body::after {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    animation: moveGrid 25s linear infinite;
+  }
+  
+  @keyframes moveGrid {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+  }
+  
+  @keyframes floatParticles {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+  }
+  
+  /* Main Content Styling */
+  main {
+    height: 100%;
+    padding: 40px 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+  }
+  
+  /* Poster Styling */
+  .series-poster {
+    margin-right: 40px;
+    max-width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0, 255, 0, 0.05);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  }
+  
+  .series-poster img {
+    max-width: 100%;
+    height: 70vh;
+    border-radius: 10px;
+  }
+  
+  /* Description Styling */
+  .series-description {
+    margin-left: 20px;
+    max-width: 50%;
+    padding: 20px;
+    background: rgba(0, 255, 0, 0.03);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  }
+  
+  .series-description h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #aaffaa;
+    text-shadow: 0 0 15px #00ff00;
+    padding: 20px;
+  }
+  
+  .series-description p {
+    text-align: center;
+    font-size: 16px;
+    color: #b2ffb2;
+    line-height: 1.5;
+  }
+  
+  /* Episode Selection Dropdown */
+  .episode-selection {
+    margin-top: 25px;
+    width: 100%;
+    /* overflow-y:scroll; */
+  }
+  
+  label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+    color: #aaffaa;
+    font-weight: bold;
+  }
+  
+  #episodeSelect {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    background-color: #001100;
+    color: #b2ffb2;
+  }
+  
+  /* Option Styling */
+  .season-group {
+    font-weight: bold;
+    color: #00ff99;
+  }
+  
+  .episode-option {
+    padding: 5px;
+  }
+  
+  /* Watch Button */
+  .watch-series-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 12px 20px;
+    background: linear-gradient(145deg, #02bf02e0, #006600);
+    color: #fff;
+    font-size: 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 20px #03e603e3;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s;
+  }
+  
+  .watch-series-btn:hover {
+    background: linear-gradient(145deg, #04e704df, #003300);
+    transform: scale(1.08);
+    box-shadow: 0 0 30px #00ff00;
+  }
+  
+  /* Debug Info */
+  .debug-info {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #0a0a0a;
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 14px;
+    color: #d4ffd4;
+    display: none;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: #ff4444;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #2a0a0a;
+    border-radius: 4px;
+  }
+  
+  /* Mobile Responsive */
+  @media screen and (max-width: 768px) {
+    .series-description {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+  
+    .series-poster {
+      margin-right: 0;
+      max-width: 100%;
+      text-align: center;
+    }
+  
+    .series-poster img {
+      max-width: 80%;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .watch-series-btn {
+      width: 100%;
+    }
+  }
+  

@@ -1,172 +1,515 @@
-//edited by abhishek
+/*updated by Abhishek - Enhanced by Claude - Fully Green Theme*/
 :root {
-    --primary-bg: linear-gradient(to left, #0f0f17, #2b2b2b); /* Darker gradient */
-    --secondary-color: rgba(34, 34, 34, 0.8); /* Semi-transparent accent */
-    --text-color: #f0f0f0; /* Brighter text */
-    --hover-effect: #ff3860; /* More vibrant hover color */
-    --card-bg: rgba(255, 255, 255, 0.1);
-    --shadow-effect: rgba(0, 0, 0, 0.5);
-    --blur-effect: blur(10px);
-}
-
-/* Remove scrollbar */
-::-webkit-scrollbar {
-    display: none;
+    --primary-bg: #052505; /* Deep forest green background */
+    --secondary-color: rgba(10, 30, 10, 0.8); /* Dark green with opacity */
+    --text-color: #e0ffe0; /* Light green text */
+    --hover-effect: rgba(0, 255, 0, 0.75); /* Pure green accent with opacity */
+    --card-bg: rgba(15, 40, 15, 0.85); /* Dark green card background */
+    --shadow-effect: rgba(0, 20, 0, 0.4); /* Green-tinted shadow */
+    --blur-effect: blur(12px); /* Blur effect */
+    --animated-bg: #0b350b; /* Dark green background for animations */
+    --accent-color: #00ff00; /* Bright green accent */
+    --accent-secondary: #7fff7f; /* Light green accent */
+    --accent-tertiary: #c0ffc0; /* Very light green accent */
+    --glow-intensity: 0.7; /* Higher intensity of glow effects */
+    --series-accent: rgba(0, 255, 0, 0.5); /* Green accent with opacity */
 }
 
 /* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background: var(--primary-bg);
     color: var(--text-color);
     line-height: 1.6;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    background: var(--animated-bg);
+    overflow-x: auto;
 }
 
-/* Navbar Styles */
-header {
+nav a{
+    color: var(--hover);
+}
+
+/* Dynamic Background */
+.cinema-background {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    z-index: 1000;
-    background: var(--secondary-color);
-    padding: 12px 24px;
+    height: 100%;
+    z-index: -10;
+    overflow: hidden;
+}
+
+/* Main gradient background - green color palette */
+.bg-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 15% 15%, rgba(77, 255, 130, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(34, 238, 105, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 75% 25%, rgba(178, 250, 24, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 25% 65%, rgba(29, 245, 216, 0.2) 0%, transparent 40%),
+        linear-gradient(45deg, #0a0a12 0%, #1a1a2e 100%);
+    z-index: -9;
+    animation: pulseGradient 18s ease infinite alternate;
+    background-size: 200% 200%;
+}
+
+/* Visual noise texture - refined opacity */
+.noise-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03; /* Slightly reduced for subtlety */
+    z-index: -8;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Animated light beams - green glow */
+.light-beams {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -7;
+    transform-origin: center;
+    overflow: hidden;
+}
+
+.beam {
+    position: absolute;
+    width: 150%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.395),transparent);
+    transform-origin: left center;
+    filter: blur(2px); /* Green glow effect */
+}
+
+.beam:nth-child(1) {
+    top: 20%;
+    transform: rotate(25deg) translateX(-100%);
+    animation: beamMove 15s linear infinite;
+    animation-delay: 0s;
+}
+
+.beam:nth-child(2) {
+    top: 45%;
+    transform: rotate(-15deg) translateX(-100%);
+    animation: beamMove 12s linear infinite;
+    animation-delay: 3s;
+}
+
+.beam:nth-child(3) {
+    top: 70%;
+    transform: rotate(20deg) translateX(-100%);
+    animation: beamMove 18s linear infinite;
+    animation-delay: 6s;
+}
+
+/* Floating cinematic particles - green glow */
+.cinema-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -6;
+}
+
+.cinema-particle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    animation: particleFloat 15s ease-in-out infinite;
+    filter: blur(5px); /* Add blur for ethereal glow */
+}
+
+.cinema-particle:nth-child(1) {
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle at center, rgba(0, 255, 0, 0.25) 0%, transparent 70%);
+    left: 20%;
+    top: 30%;
+    animation-delay: 0s;
+}
+
+.cinema-particle:nth-child(2) {
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(circle at center, rgba(0, 200, 0, 0.2) 0%, transparent 70%);
+    left: 70%;
+    top: 60%;
+    animation-delay: 3s;
+}
+
+.cinema-particle:nth-child(3) {
+    width: 70px;
+    height: 70px;
+    background: radial-gradient(circle at center, rgba(150, 255, 0, 0.15) 0%, transparent 70%);
+    left: 80%;
+    top: 20%;
+    animation-delay: 6s;
+}
+
+.cinema-particle:nth-child(4) {
+    width: 110px;
+    height: 110px;
+    background: radial-gradient(circle at center, rgba(0, 255, 150, 0.2) 0%, transparent 70%);
+    left: 10%;
+    top: 70%;
+    animation-delay: 9s;
+}
+
+/* Shining stars effect - green tint */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -4;
+}
+
+.star {
+    position: absolute;
+    background-color: #c0ffc0; /* Light green stars */
+    border-radius: 50%;
+    animation: twinkle 4s ease-in-out infinite;
+    filter: blur(0.5px); /* Subtle blur for glow */
+}
+
+@for $i from 1 through 60 {
+    .star:nth-child(#{$i}) {
+        width: random(4) + px;
+        height: random(4) + px;
+        top: random(100) + %;
+        left: random(100) + %;
+        animation-delay: random(4) + s;
+        opacity: random(10) * 0.1;
+    }
+}
+
+/* Animated bottom glow - green effect */
+.bottom-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(0deg, 
+                rgba(0, 255, 0, 0.15) 0%, 
+                rgba(0, 200, 0, 0.05) 50%,
+                transparent 100%);
+    z-index: -3;
+    animation: bottomGlowPulse 8s ease-in-out infinite alternate;
+    filter: blur(5px); /* Add blur for softer glow */
+}
+
+/* Enhanced Animations */
+@keyframes pulseGradient {
+    0% {
+        background-position: 0% 0%;
+        background-size: 200% 200%;
+    }
+    50% {
+        background-position: 50% 50%;
+        background-size: 180% 180%;
+    }
+    100% {
+        background-position: 100% 100%;
+        background-size: 200% 200%;
+    }
+}
+
+@keyframes beamMove {
+    0% {
+        transform: rotate(var(--angle, 25deg)) translateX(-100%);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: rotate(var(--angle, 25deg)) translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translate(0, 0) scale(0.7);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(var(--x-move, 50px), var(--y-move, -40px)) scale(1.1);
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, 0) scale(0.7);
+        opacity: 0;
+    }
+}
+
+@keyframes iconFloat {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+        transform: translate(25px, -25px) rotate(5deg);
+    }
+    66% {
+        transform: translate(-25px, 25px) rotate(-5deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: var(--base-opacity, 0.2);
+        transform: scale(1);
+        filter: blur(1px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.8);
+        filter: blur(0.5px) drop-shadow(0 0 2px rgba(0, 255, 0, 0.8));
+    }
+    100% {
+        opacity: var(--base-opacity, 0.2);
+        transform: scale(1);
+        filter: blur(1px);
+    }
+}
+
+@keyframes bottomGlowPulse {
+    0% {
+        opacity: 0.3;
+        height: 25%;
+    }
+    100% {
+        opacity: 0.7;
+        height: 38%;
+    }
+}
+
+.scrollable-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 8px var(--shadow-effect);
-    backdrop-filter: var(--blur-effect);
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 20px;
+    padding: 20px;
+    scrollbar-width: none; /* Firefox */
+}
+.scrollable-row::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+.upcoming-movie-item {
+    flex: 0 0 auto;
 }
 
-header img {
-    max-width: 60px; /* Adjusted for visibility */
-    transition: transform 0.3s ease;
-}
 
-header img:hover {
-    transform: scale(1.1);
-}
-
-nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 20px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: bold;
-    font-size: 14px;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-nav a:hover {
-    color: var(--hover-effect);
-    transform: scale(1.1);
-}
-
-/* Centered Content */
-main {
-    width: 80%;
-    max-width: 1200px;
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* upcoming-movies */
+.upcoming-movies {
+    position: relative;
+    width: 100%;
+    top: 40px;
     text-align: center;
 }
 
-/* Movies Heading */
+
+.upcoming-movie-item > a > img {
+    margin: 10px;
+    width: 160px;
+    height:200px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.5s ease-in-out;
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: center;
+    background: var(--card-bg);
+    box-shadow: 0 10px 25px rgba(0, 20, 0, 0.4),
+                0 0 0 1px rgba(0, 255, 0, 0.05);
+    position: relative;
+    backdrop-filter: var(--blur-effect);
+    border: 1px solid rgba(0, 255, 0, 0.13);
+}
+/* Movies Heading - green glow effect */
 #movies-heading {
     text-align: center;
-    font-size: 24px;
+    font-size: 32px; /* Larger size */
     font-weight: bold;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 30px 0; /* More spacing */
+    color: var(--text-color);
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+    letter-spacing: 3px; /* More letter spacing */
+    position: relative;
 }
 
-/* Movie Items */
+#movies-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* Wider underline */
+    height: 3px; /* Thicker underline */
+    background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 255, 0, 0.5), 
+                rgba(0, 255, 0, 1), 
+                rgba(0, 255, 0, 0.5), 
+                transparent);
+    filter: blur(1px); /* Subtle blur for glow */
+}
+
+/* Movie Items - green card styling */
 .movie-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 25px; /* Increased spacing */
+    padding: 25px;
 }
 
 .movie-item {
     margin: 10px;
-    width: 220px;
-    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-    border-radius: 10px;
+    width: 150px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.5s ease-in-out;
+    border-radius: 16px; /* Rounder corners */
     overflow: hidden;
+    text-align: center;
     background: var(--card-bg);
-    box-shadow: 0 4px 10px var(--shadow-effect);
+    box-shadow: 0 10px 25px rgba(0, 20, 0, 0.4),
+                0 0 0 1px rgba(0, 255, 0, 0.05);
     position: relative;
     backdrop-filter: var(--blur-effect);
+    border: 1px solid rgba(0, 255, 0, 0.07); /* Green border */
 }
 
 .movie-item img {
     width: 100%;
-    height: auto;
+    height: 90%;
     display: block;
-    border-radius: 10px 10px 0 0;
+    border-radius: 16px 16px 0 0;
+    transition: filter 0.5s ease, transform 0.5s ease;
 }
 
-/* Hover Effect */
+/* Enhanced Hover Effect - intense green glow */
 .movie-item:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 12px var(--hover-effect);
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.45),
+                0 0 0 1px rgba(0, 255, 0, 0.1),
+                0 0 20px rgba(0, 255, 0, 0.3);
+    z-index: 1; /* Bring hovered item to front */
 }
 
-/* Footer */
+.movie-item:hover img {
+    filter: brightness(1.25) contrast(1.1) hue-rotate(20deg); /* Slight green tint */
+    transform: scale(1.03); /* Subtle zoom effect on image */
+}
+
+/* Add subtle shine effect on hover */
+.movie-item::after {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(0, 255, 0, 0) 0%,
+        rgba(0, 255, 0, 0) 40%,
+        rgba(0, 255, 0, 0.3) 50%,
+        rgba(0, 255, 0, 0) 60%,
+        rgba(0, 255, 0, 0) 100%
+    );
+    transform: rotate(45deg);
+    transition: all 0.8s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.movie-item:hover::after {
+    animation: shine 1.5s forwards;
+}
+
+/* Shine animation */
+@keyframes shine {
+    0% {
+        opacity: 0;
+        top: -150%;
+        left: -50%;
+    }
+    20% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        top: 100%;
+        left: 100%;
+    }
+}
+
+/* Footer - green styling */
 footer {
     text-align: center;
-    padding: 12px;
+    padding: 20px;
     background: var(--secondary-color);
     color: var(--text-color);
     backdrop-filter: var(--blur-effect);
     width: 100%;
+    margin-top: 50px;
+    box-shadow: 0 -5px 25px rgba(0, 30, 0, 0.4);
+    border-top: 1px solid rgba(0, 255, 0, 0.07);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 600px) {
-    header {
-        padding: 8px 16px;
-    }
-
-    header img {
-        max-width: 40px;
-    }
-
-    nav ul li {
-        margin: 0 8px;
-    }
-
-    nav a {
-        font-size: 12px;
-    }
-
-    .movie-item {
-        width: 160px;
-    }
+/* Add subtle green glow to footer */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 2px;
+    background: var(--accent-color);
+    opacity: 0.5;
+    filter: blur(3px);
 }
+

@@ -50,245 +50,15 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-
-    <style>
-        body,
-        h1,
-        h2,
-        h3,
-        p,
-        ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-
-            background-color: #f7f7f7;
-        }
-
-        /* Header styles */
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            /* Fixed position */
-            top: 0;
-            /* Fixed to the top */
-            width: 98%;
-            /* Full width */
-            z-index: 1000;
-            /* Ensure it's above other content */
-        }
-
-        header img {
-            max-width: 50px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 15px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        nav ul li a i {
-            font-size: 24px;
-        }
-
-
-
-
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        p {
-            margin: 8px 0;
-            color: #666;
-        }
-
-        .user-details {
-            border-top: 1px solid #ddd;
-            padding-top: 20px;
-        }
-
-        .btn {
-            display: block;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin: 20px auto;
-            width: 80%;
-            max-width: 200px;
-        }
-
-        .btn:hover {
-            background-color: #45a049;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            /* Ensure padding and border do not increase element's width */
-        }
-
-        button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        .error {
-            color: #ff0000;
-            margin-bottom: 10px;
-        }
-
-        .success {
-            color: #008000;
-            margin-bottom: 10px;
-        }
-
-        /* Media query for smaller screens */
-        @media screen and (max-width: 600px) {
-
-            .container {
-                width: 70%;
-            }
-
-            nav ul li {
-                display: inline-block;
-                margin: 0px 1px;
-            }
-        }
-
-        nav ul li a i {
-            font-size: 24px;
-        }
-
-        nav ul {
-            text-align: center;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            /* Adjust color as needed */
-        }
-
-        nav ul li a i {
-            margin-right: 5px;
-            /* Adjust spacing between icon and text */
-        }
-
-        @media screen and (max-width: 600px) {
-
-
-            header {
-                position: fixed;
-                width: 97.5%;
-                z-index: 1000;
-                background-color: #000;
-                color: #fff;
-                padding: 7px 5px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            nav a {
-                text-decoration: none;
-                color: #fff;
-                font-weight: bold;
-                font-size: 10px;
-            }
-
-            nav ul li a i {
-                font-size: 17px;
-            }
-
-            nav ul li {
-                display: inline-block;
-                margin: 0px 2px;
-            }
-
-            nav a {
-                text-decoration: none;
-                color: #fff;
-                font-weight: bold;
-                font-size: 8px;
-            }
-        }
-
-        .container {
-            width: 90%;
-            margin: 50px auto;
-            margin-top: 70px;
-
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-
-        #si {
-            margin-right: 90%;
-        }
-    </style>
+<link rel="stylesheet" href="css/background-animation.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/profile.css">
 </head>
 
 <body>
     <header>
         <!-- Add your logo and navigation here -->
-        <img src="your-logo.png" alt="Your Logo">
+        <img src="logo.png" alt="Your Logo">
         <nav>
             <ul>
                 <li><a href="home.php"><i class='bx bx-home'></i> home</a></li>
@@ -300,6 +70,63 @@ $conn->close();
             </ul>
         </nav>
     </header>
+
+
+<!-- Premium cinematic background -->
+<div class="cinema-background">
+    <!-- Main gradient background -->
+    <div class="bg-gradient"></div>
+    
+    <!-- Noise texture overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Light beams -->
+    <div class="light-beams">
+        <div class="beam"></div>
+        <div class="beam"></div>
+        <div class="beam"></div>
+    </div>
+    
+    <!-- Floating particles -->
+    <!-- <div class="cinema-particles">
+        <div class="cinema-particle"></div>
+        <div class="cinema-particle"></div>
+        <div class="cinema-particle"></div>
+        <div class="cinema-particle"></div>
+    </div> -->
+    
+    <!-- Cinematic icons -->
+    <div class="cinema-icons">
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+    </div>
+    
+    <!-- Starry background -->
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
+    <!-- Bottom glow effect -->
+    <div class="bottom-glow"></div>
+</div>
+
+
     <div class="container">
         <h1>User Profile</h1>
         <a id="si" href="signout.php" class="btn">Logout</a>
@@ -376,11 +203,11 @@ $conn->close();
         $conn->close();
         ?>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="#" class="btn" onclick="showForgotPasswordForm()">Forgot Password</a>
+            <a href="#" class="btn" onclick="showForgotPasswordForm()">Change Password</a>
         </div>
 
         <div id="forgotPasswordForm" style="display: none; margin-top: 20px;">
-            <h2>Forgot Password</h2>
+            <h2>Change Password</h2>
 
             <form method="post">
                 <label for="current_password">Current Password:</label>

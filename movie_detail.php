@@ -66,181 +66,15 @@ $mysqli->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($movie['title']); ?> - Movie Detail</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        /* Add your CSS styles here */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            display: flex;
-            position: fixed;
-            top: 0;
-            width: 98%;
-        }
-
-        header img {
-            margin-left: 20px;
-            max-width: 40px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            padding-left: 2px;
-        }
-
-        main {
-            padding: 20px;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-top: 80px;
-            /* Add top margin to ensure content is below the fixed header */
-        }
-
-        .movie-poster {
-            margin-top: 5%;
-            margin-right: 20px;
-            max-width: 300px;
-        }
-
-        .movie-poster img {
-            max-width: 100%;
-        }
-
-        .movie-description {
-            margin-top: 13%;
-            max-width: 50%;
-        }
-
-        .movie-description h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .movie-description p {
-            font-size: 16px;
-            /* Decrease the font size */
-            color: #888;
-            /* Set the color to gray */
-        }
-
-        .watch-movie-btn {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            font-size: 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            text-align: center;
-            cursor: pointer;
-            /* Add cursor pointer to indicate it's clickable */
-        }
-
-        .watch-movie-btn:hover {
-            background-color: #0056b3;
-        }
-
-        header {
-            position: fixed;
-            width: 98%;
-            z-index: 1000;
-            background-color: #000;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-size: 15px;
-        }
-
-        nav ul {
-            text-align: center;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            /* Adjust color as needed */
-        }
-
-        nav ul li a i {
-            margin-right: 5px;
-            font-size: 24px;
-        }
-
-        @media screen and (max-width: 600px) {
-
-            header {
-                position: fixed;
-                width: 98%;
-                z-index: 1000;
-                background-color: #000;
-                color: #fff;
-                padding: 7px 5px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            nav a {
-                text-decoration: none;
-                color: #fff;
-                font-weight: bold;
-                font-size: 10px;
-            }
-
-            nav ul li a i {
-                font-size: 17px;
-            }
-
-            nav ul li {
-                display: inline-block;
-                margin: 0px 2px;
-            }
-
-            nav a {
-                text-decoration: none;
-                color: #fff;
-                font-weight: bold;
-                font-size: 8px;
-            }
-        }
-        
-    </style>
+    <link rel="stylesheet" href="css/background-animation.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/movie_detail.css">
 </head>
 
 <body>
     <header>
         <!-- Add your logo and navigation here -->
-        <img src="your-logo.png" alt="Your Logo">
+        <img src="logo.png" alt="Your Logo">
         <nav>
             <ul>
                 <li><a href="home.php"><i class='bx bx-home'></i> home</a></li>
@@ -252,6 +86,53 @@ $mysqli->close();
             </ul>
         </nav>
     </header>
+ 
+<!-- Premium cinematic background -->
+<div class="cinema-background">
+    <!-- Main gradient background -->
+    <div class="bg-gradient"></div>
+    
+    <!-- Noise texture overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Light beams -->
+    <div class="light-beams">
+        <div class="beam"></div>
+        <div class="beam"></div>
+        <div class="beam"></div>
+    </div>
+    
+    <!-- Cinematic icons -->
+    <div class="cinema-icons">
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+        <div class="cinema-icon"></div>
+    </div>
+    
+    <!-- Starry background -->
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
+    <!-- Bottom glow effect -->
+    <div class="bottom-glow"></div>
+</div>
+
     <main>
         <!-- Display movie poster -->
         <div class="movie-poster">
@@ -289,7 +170,5 @@ $mysqli->close();
             }
         }
     </script>
-
 </body>
-
 </html>

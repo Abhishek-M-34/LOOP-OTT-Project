@@ -67,89 +67,14 @@ if (!$users) {
     <title>Admin - User Management</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* Global styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header styles */
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header img {
-            max-width: 50px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 15px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        nav ul li:hover::before {
-            content: attr(title);
-            position: absolute;
-            background-color: #000;
-            color: #fff;
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 12px;
-            white-space: nowrap;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        nav ul li a i {
-            font-size: 24px;
-        }
-
-        /* Table and pagination styles */
-        .table {
-            width: 99vw;
-            height: 90vh;
-            background-color: #fff5;
-            margin-top: 0.5%;
-            margin-left: 0.5%;
-            backdrop-filter: blur(7px);
-            box-shadow: 0 0.4rem 0.8rem #0005;
-            border-radius: .8rem;
-            overflow: hidden;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- <link rel="stylesheet" href="../css/user.css"> -->
 </head>
 
 <body>
 
     <header>
-        <img src="../your-logo.png" alt="Your Logo">
+        <img src="../logo.png" alt="Your Logo">
         <nav>
             <ul>
                 <!-- Add navigation links -->
@@ -157,8 +82,8 @@ if (!$users) {
                 <li><a href="upload.html"><i class='bx bx-upload'></i></a></li>
                 <li><a href="user.php"><i class='bx bxs-user'></i></i></a></li>
                 <li><a href="video_management.php"><i class='bx bxs-videos'></i></i></a></li>
-                <li><a href="payment_management.php"><i class='bx bxs-purchase-tag'></i></i></i></a></li>
-                <li><a href="ad_upload.php"><i class='bx bx-cloud-upload'></i></a></li>
+                <li><a href="payment_managemant.php"><i class='bx bxs-purchase-tag'></i></i></i></a></li>
+                <!-- <li><a href="ad_upload.php"><i class='bx bx-cloud-upload'></i></a></li> -->
                 <li><a href="../signout.php"><i class='bx bx-log-out-circle'></i></a></li>
             </ul>
         </nav>

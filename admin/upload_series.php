@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     uploadSeries($conn, $title, $description, $targetFilePath, $seasons, $currentStatus);
 
     // Redirect to success page
-    header("Location: success.php");
+    header("Location:success.php ");
     exit();
 }
 ?>
