@@ -1,0 +1,162 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #d4ffd4;
+  position: relative;
+}
+
+/* Background Gradient */
+.bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(77, 255, 130, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(34, 238, 105, 0.2) 0%, transparent 45%),
+    radial-gradient(circle at 75% 25%, rgba(178, 250, 24, 0.15) 0%, transparent 35%),
+    radial-gradient(circle at 25% 65%, rgba(29, 245, 216, 0.2) 0%, transparent 40%),
+    linear-gradient(45deg, #0a0a12 0%, #1a1a2e 100%);
+  z-index: -9;
+  background-size: 200% 200%;
+  animation: pulseGradient 18s ease infinite alternate;
+}
+
+/* Floating Particles */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  background-image: radial-gradient(circle, #00ff00 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -8;
+  animation: floatParticles 60s linear infinite;
+}
+
+/* Cube-style grid background */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -7;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(0, 255, 0, 0.03) 0px,
+    rgba(0, 255, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+  animation: moveGrid 25s linear infinite;
+}
+
+/* Animations */
+@keyframes pulseGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes floatParticles {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+@keyframes moveGrid {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+/* Main Content Area */
+main {
+  padding: 40px 20px;
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 255, 0, 0.02);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+}
+
+/* Poster Styling */
+.movie-poster {
+  margin-top: 2%;
+  margin-right: 40px;
+  max-width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(0, 255, 0, 0.05);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+.movie-poster img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Description Styling */
+.movie-description {
+  margin-left: 20px;
+  max-width: 50%;
+  padding: 20px;
+  background: rgba(0, 255, 0, 0.03);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+.movie-description h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #aaffaa;
+  text-shadow: 0 0 15px #02e702dc;
+  padding: 20px;
+}
+
+.movie-description p {
+  text-align: center;
+  font-size: 16px;
+  color: #b2ffb2;
+}
+
+/* Watch Button */
+.watch-movie-btn {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 12px 20px;
+  background: linear-gradient(145deg, #05cb05ce, #006600);
+  color: #fff;
+  font-size: 20px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 20px #00ff00;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s;
+}
+
+.watch-movie-btn:hover {
+  background: linear-gradient(145deg, #08d708d4, #003300);
+  transform: scale(1.08);
+  box-shadow: 0 0 30px #00ff00;
+}

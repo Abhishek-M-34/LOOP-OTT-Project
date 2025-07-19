@@ -1,0 +1,836 @@
+/*updated by Abhishek - Enhanced Series CSS - Green Theme Match*/
+:root {
+    --primary-bg: #052505; /* Deep forest green background */
+    --secondary-color: rgba(10, 30, 10, 0.8); /* Dark green with opacity */
+    --text-color: #e0ffe0; /* Light green text */
+    --hover-effect: rgba(0, 255, 0, 0.75); /* Pure green accent with opacity */
+    --card-bg: rgba(15, 40, 15, 0.85); /* Dark green card background */
+    --shadow-effect: rgba(0, 20, 0, 0.4); /* Green-tinted shadow */
+    --blur-effect: blur(12px); /* Blur effect */
+    --animated-bg: #052505; /* Dark green background for animations */
+    --accent-color: #00ff00; /* Bright green accent */
+    --accent-secondary: #7fff7f; /* Light green accent */
+    --accent-tertiary: #c0ffc0; /* Very light green accent */
+    --glow-intensity: 0.7; /* Higher intensity of glow effects */
+    --series-accent: rgba(0, 255, 0, 0.5); /* Green accent with opacity - changed from teal */
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: var(--animated-bg);
+    overflow-x: auto;
+}
+
+/* Dynamic Background */
+.cinema-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    overflow: hidden;
+}
+
+/* Main gradient background - green color palette */
+.bg-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 15% 15%, rgba(77, 255, 130, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(34, 238, 105, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 75% 25%, rgba(178, 250, 24, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 25% 65%, rgba(29, 245, 216, 0.2) 0%, transparent 40%),
+        linear-gradient(45deg, #0a0a12 0%, #1a1a2e 100%);
+    z-index: -9;
+    animation: pulseGradient 18s ease infinite alternate;
+    background-size: 200% 200%;
+}
+
+
+
+/* Animated light beams - green glow */
+.light-beams {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -7;
+    transform-origin: center;
+    overflow: hidden;
+}
+
+.beam {
+    position: absolute;
+    width: 150%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.15), transparent);
+    transform-origin: left center;
+    filter: blur(2px); /* Green glow effect */
+}
+
+.beam:nth-child(1) {
+    top: 20%;
+    transform: rotate(25deg) translateX(-100%);
+    animation: beamMove 15s linear infinite;
+    animation-delay: 0s;
+}
+
+.beam:nth-child(2) {
+    top: 45%;
+    transform: rotate(-15deg) translateX(-100%);
+    animation: beamMove 12s linear infinite;
+    animation-delay: 3s;
+}
+
+.beam:nth-child(3) {
+    top: 70%;
+    transform: rotate(20deg) translateX(-100%);
+    animation: beamMove 18s linear infinite;
+    animation-delay: 6s;
+}
+
+/* Floating cinematic particles - green glow */
+.cinema-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -6;
+}
+
+.cinema-particle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    animation: particleFloat 15s ease-in-out infinite;
+    filter: blur(5px); /* Add blur for ethereal glow */
+}
+
+.cinema-particle:nth-child(1) {
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle at center, rgba(0, 255, 0, 0.25) 0%, transparent 70%);
+    left: 20%;
+    top: 30%;
+    animation-delay: 0s;
+}
+
+.cinema-particle:nth-child(2) {
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(circle at center, rgba(0, 200, 0, 0.2) 0%, transparent 70%);
+    left: 70%;
+    top: 60%;
+    animation-delay: 3s;
+}
+
+.cinema-particle:nth-child(3) {
+    width: 70px;
+    height: 70px;
+    background: radial-gradient(circle at center, rgba(150, 255, 0, 0.15) 0%, transparent 70%);
+    left: 80%;
+    top: 20%;
+    animation-delay: 6s;
+}
+
+.cinema-particle:nth-child(4) {
+    width: 110px;
+    height: 110px;
+    background: radial-gradient(circle at center, rgba(0, 255, 150, 0.2) 0%, transparent 70%);
+    left: 10%;
+    top: 70%;
+    animation-delay: 9s;
+}
+
+/* Shining stars effect - green tint */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -4;
+}
+
+.star {
+    position: absolute;
+    background-color: #c0ffc0; /* Light green stars */
+    border-radius: 50%;
+    animation: twinkle 4s ease-in-out infinite;
+    filter: blur(0.5px); /* Subtle blur for glow */
+}
+
+@for $i from 1 through 60 {
+    .star:nth-child(#{$i}) {
+        width: random(4) + px;
+        height: random(4) + px;
+        top: random(100) + %;
+        left: random(100) + %;
+        animation-delay: random(4) + s;
+        opacity: random(10) * 0.1;
+    }
+}
+
+/* Animated bottom glow - green effect */
+.bottom-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(0deg, 
+                rgba(0, 255, 0, 0.15) 0%, 
+                rgba(0, 200, 0, 0.05) 50%,
+                transparent 100%);
+    z-index: -3;
+    animation: bottomGlowPulse 8s ease-in-out infinite alternate;
+    filter: blur(5px); /* Add blur for softer glow */
+}
+
+/* Enhanced Animations */
+@keyframes pulseGradient {
+    0% {
+        background-position: 0% 0%;
+        background-size: 200% 200%;
+    }
+    50% {
+        background-position: 50% 50%;
+        background-size: 180% 180%;
+    }
+    100% {
+        background-position: 100% 100%;
+        background-size: 200% 200%;
+    }
+}
+
+@keyframes beamMove {
+    0% {
+        transform: rotate(var(--angle, 25deg)) translateX(-100%);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: rotate(var(--angle, 25deg)) translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translate(0, 0) scale(0.7);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(var(--x-move, 50px), var(--y-move, -40px)) scale(1.1);
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, 0) scale(0.7);
+        opacity: 0;
+    }
+}
+
+@keyframes iconFloat {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+        transform: translate(25px, -25px) rotate(5deg);
+    }
+    66% {
+        transform: translate(-25px, 25px) rotate(-5deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: var(--base-opacity, 0.2);
+        transform: scale(1);
+        filter: blur(1px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.8);
+        filter: blur(0.5px) drop-shadow(0 0 2px rgba(0, 255, 0, 0.8));
+    }
+    100% {
+        opacity: var(--base-opacity, 0.2);
+        transform: scale(1);
+        filter: blur(1px);
+    }
+}
+
+@keyframes bottomGlowPulse {
+    0% {
+        opacity: 0.3;
+        height: 25%;
+    }
+    100% {
+        opacity: 0.7;
+        height: 38%;
+    }
+}
+
+
+
+/* Animated bottom glow - green effect */
+.bottom-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(0deg, 
+    rgba(0, 255, 0, 0.15) 0%, 
+    rgba(0, 200, 0, 0.05) 50%, 
+                transparent 100%);
+    z-index: -3;
+    animation: bottomGlowPulse 8s ease-in-out infinite alternate;
+    filter: blur(5px); /* Add blur for softer glow */
+}
+
+/* Animations */
+@keyframes pulseGradient {
+    0% {
+        background-position: 0% 0%;
+        background-size: 200% 200%;
+    }
+    50% {
+        background-position: 50% 50%;
+        background-size: 180% 180%;
+    }
+    100% {
+        background-position: 100% 100%;
+        background-size: 200% 200%;
+    }
+}
+
+
+@keyframes bottomGlowPulse {
+    0% {
+        opacity: 0.3;
+        height: 25%;
+    }
+    100% {
+        opacity: 0.7;
+        height: 38%;
+    }
+}
+
+/* Centered Content */
+main {
+    width: 80%;
+    max-width: 1200px;
+    margin-top: 80px;
+    padding: 20px;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Series Heading - updated to match movies heading */
+#series-heading {
+    text-align: center;
+    font-size: 32px; /* Larger size */
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0; /* More spacing */
+    color: var(--text-color);
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+    letter-spacing: 3px; /* More letter spacing */
+    position: relative;
+}
+
+#series-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* Wider underline */
+    height: 3px; /* Thicker underline */
+    background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 255, 0, 0.5), /* Changed from teal to green */
+                rgba(0, 255, 0, 1), /* Changed from teal to green */
+                rgba(0, 255, 0, 0.5), /* Changed from teal to green */
+                transparent);
+    filter: blur(1px); /* Subtle blur for glow */
+}
+
+.series-headingg {
+    color: var(--text-color);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Changed from teal to green */
+    margin-top: 20px;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+}
+
+/* Series Items - updated to match movie items */
+.series-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px; /* Increased spacing */
+    padding: 25px;
+}
+
+.series-item {
+    margin: 10px;
+    width: 180px;
+    height: 240px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.5s ease-in-out;
+    border-radius: 16px; /* Rounder corners */
+    overflow: hidden;
+    background: var(--card-bg);
+    box-shadow: 0 10px 25px rgba(0, 20, 0, 0.4), /* Updated to green-tinted shadow */
+                0 0 0 1px rgba(0, 255, 0, 0.05); /* Changed to green border */
+    position: relative;
+    backdrop-filter: var(--blur-effect);
+    border: 1px solid rgba(0, 255, 0, 0.07); /* Green border */
+    display: inline-block;
+}
+
+.series-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px 16px 0 0;
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+/* Enhanced Hover Effect - updated to green */
+.series-item:hover {
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.45), /* Changed from teal to green */
+                0 0 0 1px rgba(0, 255, 0, 0.1), /* Changed to green */
+                0 0 20px rgba(0, 255, 0, 0.3); /* Changed from teal to green */
+    z-index: 1; /* Bring hovered item to front */
+}
+
+.series-item:hover img {
+    filter: brightness(1.25) contrast(1.1) hue-rotate(20deg); /* Added subtle green tint */
+    transform: scale(1.03); /* Subtle zoom effect on image */
+}
+
+/* Add subtle shine effect on hover - updated to green */
+.series-item::after {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(0, 255, 0, 0) 0%,
+        rgba(0, 255, 0, 0) 40%,
+        rgba(0, 255, 0, 0.3) 50%, /* Changed to green */
+        rgba(0, 255, 0, 0) 60%,
+        rgba(0, 255, 0, 0) 100%
+    );
+    transform: rotate(45deg);
+    transition: all 0.8s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.series-item:hover::after {
+    animation: shine 1.5s forwards;
+}
+
+/* Caption animation - updated to green */
+.series-item .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--text-color);
+    padding: 10px; /* More padding */
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    border-radius: 0 0 16px 16px; /* Match card border radius */
+    opacity: 0;
+    backdrop-filter: blur(5px); /* Add blur effect */
+    border-top: 1px solid rgba(0, 255, 0, 0.3); /* Changed from teal to green */
+}
+
+.series-item:hover .caption {
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+/* Latest Series Section - updated to green */
+/* Latest Series Section - forced horizontal layout */
+.letest-series {
+    max-width: 100%;
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    margin-right: 0;
+    color: var(--text-color);
+    padding: 10px 0;
+}
+
+/* Force horizontal layout */
+.scrollable-row {
+    display: flex;
+    flex-direction: row; /* Explicitly set horizontal direction */
+    flex-wrap: nowrap; /* Prevent wrapping to new line */
+    gap: 20px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    overflow-y: hidden; /* Prevent vertical scrolling */
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+/* Remove any conflicting styles that might cause vertical stacking */
+.latest-series-item, .letest-series-item {
+    display: inline-block; /* Force inline display */
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin-right: 30px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.5s ease-in-out;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 20, 0, 0.4), /* Updated to green-tinted shadow */
+                0 0 0 1px rgba(0, 255, 0, 0.05); /* Changed to green */
+    background: var(--card-bg);
+    backdrop-filter: var(--blur-effect);
+    border: 1px solid rgba(0, 255, 0, 0.07); /* Changed to green */
+    flex: 0 0 auto; /* Don't grow or shrink */
+    width: 160px;
+    vertical-align: top; /* Align tops of items */
+    float: none; /* Remove any floating */
+}
+
+/* Ensure container is properly set up for horizontal layout */
+.letest-series > div {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+}
+.letest-series h2 {
+    font-size: 26px; /* Slightly larger */
+    margin-bottom: 20px; /* More spacing */
+    color: var(--text-color);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Changed from teal to green */
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1.5px;
+}
+
+.letest-series h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+                rgba(0, 255, 0, 0.8), /* Changed from teal to green */
+                rgba(0, 255, 0, 0.1)); /* Changed from teal to green */
+}
+
+.latest-series-image, .letest-series-item img {
+    width: 100%;
+    height: 220px; /* Taller images */
+    border-radius: 16px 16px 0 0;
+    object-fit: cover; /* Ensure images cover area nicely */
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.latest-series-item:hover, .letest-series-item:hover {
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.45), /* Changed from teal to green */
+                0 0 0 1px rgba(0, 255, 0, 0.1),
+                0 0 20px rgba(0, 255, 0, 0.3); /* Changed from teal to green */
+    z-index: 1;
+}
+
+.latest-series-item:hover img, .letest-series-item:hover img {
+    filter: brightness(1.25) contrast(1.1) hue-rotate(20deg); /* Added subtle green tint */
+    transform: scale(1.03);
+}
+
+.latest-series-item .caption, .letest-series-item .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--text-color);
+    padding: 10px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    border-radius: 0 0 16px 16px;
+    opacity: 0;
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(0, 255, 0, 0.3); /* Changed from teal to green */
+}
+
+.latest-series-item:hover .caption, .letest-series-item:hover .caption {
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+/* Slideshow styles - updated to green */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 16px; /* Rounder corners */
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 20, 0, 0.5), /* Updated to green-tinted shadow */
+                0 0 0 1px rgba(0, 255, 0, 0.08); /* Changed to green */
+}
+
+.mySlides {
+    display: none;
+    width: 100%;
+}
+
+.mySlides img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    transition: transform 0.5s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, 
+                rgba(0, 0, 0, 0.8) 0%,
+                rgba(0, 0, 0, 0.4) 50%,
+                rgba(0, 0, 0, 0.2) 100%);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align to bottom */
+    align-items: flex-start; /* Align to left */
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+    border-radius: 16px;
+}
+
+.mySlides:hover .overlay {
+    opacity: 1;
+}
+
+.mySlides:hover img {
+    transform: scale(1.05);
+}
+
+.overlay h2 {
+    margin: 0 0 10px 0;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding-bottom: 5px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.4s ease 0.1s, opacity 0.4s ease 0.1s;
+}
+
+.overlay p {
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    font-size: 16px;
+    max-width: 80%;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.4s ease 0.2s, opacity 0.4s ease 0.2s;
+}
+
+.mySlides:hover .overlay h2,
+.mySlides:hover .overlay p {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.overlay h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--accent-color); /* Changed to use green accent */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease 0.3s;
+}
+
+.mySlides:hover .overlay h2::after {
+    transform: scaleX(1);
+}
+
+/* Shine animation */
+@keyframes shine {
+    0% {
+        opacity: 0;
+        top: -150%;
+        left: -50%;
+    }
+    20% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        top: 100%;
+        left: 100%;
+    }
+}
+
+/* Footer - updated to green */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    backdrop-filter: var(--blur-effect);
+    width: 100%;
+    margin-top: 50px;
+    box-shadow: 0 -5px 25px rgba(0, 30, 0, 0.4); /* Updated to green-tinted shadow */
+    border-top: 1px solid rgba(0, 255, 0, 0.07); /* Changed to green */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add subtle green glow to footer */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 2px;
+    background: var(--accent-color); /* Changed from teal to green */
+    opacity: 0.5;
+    filter: blur(3px);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    header {
+        padding: 8px 16px;
+    }
+
+    header img {
+        max-width: 40px;
+    }
+
+    nav ul li {
+        margin: 0 8px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    nav ul li a i {
+        font-size: 17px;
+    }
+
+    .series-item {
+        width: 140px;
+        margin: 5px;
+    }
+
+    .series-item img {
+        height: 180px;
+    }
+
+    .latest-series-item, .letest-series-item {
+        width: 120px;
+    }
+
+    .latest-series-image, .letest-series-item img {
+        height: 170px;
+    }
+    
+    #series-heading {
+        font-size: 24px;
+    }
+    
+    .letest-series h2 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 1191px) {
+    .series-item {
+        width: 160px;
+    }
+
+    .series-item img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+}

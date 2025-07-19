@@ -1,0 +1,352 @@
+/* Custom Variables - matching the first CSS file */
+:root {
+    --primary-bg: #0a0a12; /* Dark rich background */
+    --secondary-color: rgba(18, 18, 30, 0.8); /* Slightly increased opacity for better contrast */
+    --text-color: #ffffff; /* Light text for dark theme */
+    --hover-effect: rgba(86, 250, 45, 0.756); /* Vibrant accent color */
+    --card-bg: rgba(25, 25, 35, 0.85); /* Increased opacity for better visibility */
+    --shadow-effect: rgba(0, 0, 0, 0.3); /* Slightly stronger shadows */
+    --blur-effect: blur(12px); /* Increased blur effect */
+    --animated-bg: #0a0a12; /* Dark background for animations */
+    --accent-color: rgba(86, 250, 45, 0.756); /* Vibrant green accent */
+    --accent-secondary: #3af0d1; /* Teal accent */
+    --accent-tertiary: #ffcb3d; /* Gold accent */
+    --glow-intensity: 0.6; /* Controls the intensity of glow effects */
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background: var(--animated-bg);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Dynamic Background - added from first CSS */
+.cinema-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    overflow: hidden;
+}
+
+/* Main gradient background */
+.bg-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 15% 15%, rgba(77, 255, 130, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(34, 238, 105, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 75% 25%, rgba(178, 250, 24, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 25% 65%, rgba(29, 245, 216, 0.2) 0%, transparent 40%),
+        linear-gradient(45deg, #0a0a12 0%, #1a1a2e 100%);
+    z-index: -9;
+    animation: pulseGradient 18s ease infinite alternate;
+    background-size: 200% 200%;
+}
+
+/* Animated bottom glow */
+.bottom-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(0deg, 
+                rgba(86, 250, 45, 0.15) 0%,
+                rgba(58, 240, 209, 0.05) 50%,
+                transparent 100%);
+    z-index: -3;
+    animation: bottomGlowPulse 8s ease-in-out infinite alternate;
+    filter: blur(5px); /* Add blur for softer glow */
+}
+
+/* Animations */
+@keyframes pulseGradient {
+    0% {
+        background-position: 0% 0%;
+        background-size: 200% 200%;
+    }
+    50% {
+        background-position: 50% 50%;
+        background-size: 180% 180%;
+    }
+    100% {
+        background-position: 100% 100%;
+        background-size: 200% 200%;
+    }
+}
+
+@keyframes bottomGlowPulse {
+    0% {
+        opacity: 0.3;
+        height: 25%;
+    }
+    100% {
+        opacity: 0.7;
+        height: 38%;
+    }
+}
+
+@keyframes shine {
+    0% {
+        opacity: 0;
+        top: -150%;
+        left: -50%;
+    }
+    20% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        top: 100%;
+        left: 100%;
+    }
+}
+
+
+/* Container styles */
+.container {
+    width: 90%;
+    margin: 100px auto 50px;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: var(--blur-effect);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+                transparent, 
+                rgba(86, 250, 45, 0.5),
+                rgba(86, 250, 45, 0.8),
+                rgba(86, 250, 45, 0.5),
+                transparent);
+    filter: blur(1px);
+}
+
+h1 {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(86, 250, 45, 0.4);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, 
+                transparent, 
+                rgba(86, 250, 45, 0.5),
+                rgba(86, 250, 45, 0.8),
+                rgba(86, 250, 45, 0.5),
+                transparent);
+    filter: blur(1px);
+}
+
+p {
+    margin: 16px 0;
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.user-details {
+    border-top: 1px solid rgba(86, 250, 45, 0.3);
+    padding-top: 25px;
+    margin-top: 25px;
+}
+
+/* Button styles */
+.btn {
+    display: block;
+    background: linear-gradient(135deg, rgba(86, 250, 45, 0.8) 0%, rgba(58, 240, 209, 0.8) 100%);
+    color: #111;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin: 25px auto;
+    width: 80%;
+    max-width: 200px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(86, 250, 45, 0.4);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, rgba(86, 250, 45, 1) 0%, rgba(58, 240, 209, 1) 100%);
+    box-shadow: 0 8px 20px rgba(86, 250, 45, 0.6);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 60%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.btn:hover::after {
+    animation: shine 1.5s forwards;
+}
+
+/* Form elements */
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(86, 250, 45, 0.3);
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: rgba(10, 10, 18, 0.6);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+input[type="password"]:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 5px 15px rgba(86, 250, 45, 0.3);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(86, 250, 45, 0.8) 0%, rgba(58, 240, 209, 0.8) 100%);
+    color: #111;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(86, 250, 45, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, rgba(86, 250, 45, 1) 0%, rgba(58, 240, 209, 1) 100%);
+    box-shadow: 0 8px 20px rgba(86, 250, 45, 0.6);
+}
+
+button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 60%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
+button[type="submit"]:hover::after {
+    animation: shine 1.5s forwards;
+}
+
+/* Status messages */
+.error {
+    color: #ff5e5e;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 0, 0, 0.1);
+    border-left: 3px solid #ff5e5e;
+}
+
+.success {
+    color: #62ff8e;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(0, 255, 0, 0.1);
+    border-left: 3px solid #62ff8e;
+}
+
+
+#si {
+    margin-right: 0;
+    display: flex;
+    justify-content: flex-start;
+}

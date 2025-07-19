@@ -1,0 +1,92 @@
+:root{
+--secondary-color: rgba(18, 18, 30, 0.8); /* Slightly increased opacity for better contrast */
+--blur-effect: blur(12px); /* Increased blur effect */
+/* --hover-effect: #ff4d6a;  */
+}
+
+
+
+/* Navbar Styles - Enhanced */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--secondary-color);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+  backdrop-filter: var(--blur-effect);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+header img {
+  max-width: 60px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(0, 200, 0, 0.2));
+}
+
+header img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 15px rgba(0, 255, 0, 0.274));
+}
+
+nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+  position: relative;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+  margin-right: 5px;
+  padding: 5px 0;
+  position: relative;
+}
+
+nav a:hover {
+  color: var(--hover-effect);
+  transform: scale(1.1);
+  text-shadow: 0 0 8px rgba(150, 255, 0, 0.15);
+}
+
+/* Add underline animation to nav links */
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--hover-effect);
+  transition: width 0.3s ease;
+  transform-origin: bottom left;
+  opacity: 0.8;
+  filter: blur(0.5px);
+}
+
+nav a:hover::after {
+  width: 100%;
+  box-shadow: 0 0 5px rgba(0, 200, 0, 0.2)
+}
